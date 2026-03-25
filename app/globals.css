@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Mode (Gruvbox Light) */
+  --background: #fbf1c7;
+  --foreground: #3c3836;
+  --gruvbox-yellow: #b57614;
+  --gruvbox-gray: #7c6f64;
+  --gruvbox-outline: #a89984;
+}
+
+.dark {
+  /* Dark Mode (Gruvbox Dark) */
+  --background: #282828;
+  --foreground: #ebdbb2;
+  --gruvbox-yellow: #fabd2f;
+  --gruvbox-gray: #928374;
+  --gruvbox-outline: #665c54;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gruvbox-yellow: var(--gruvbox-yellow);
+  --color-gruvbox-gray: var(--gruvbox-gray);
+  --color-gruvbox-outline: var(--gruvbox-outline);
+  
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-manrope);
+
+  --animate-scroll-left: scroll-left 60s linear infinite;
+  --animate-scroll-right: scroll-right 60s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes scroll-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both fade-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
