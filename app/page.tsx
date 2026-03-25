@@ -7,9 +7,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { SocialLinks } from "@/components/SocialLinks";
 import { BackgroundText } from "@/components/BackgroundText";
 import { portfolioConfig } from "@/config/portfolio";
+import profilePic from "@/public/photo.webp";
 
 export default function Home() {
-  const { profileImage, name, initials, role, cvPath, motto } = portfolioConfig;
+  const { name, initials, role, cvPath, motto } = portfolioConfig;
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-8 relative overflow-hidden bg-background text-foreground transition-colors duration-300 font-sans">
@@ -20,19 +21,21 @@ export default function Home() {
         <div className="relative w-32 h-32 md:w-48 md:h-48 group">
           <div className="absolute inset-0 rounded-full border-4 border-gruvbox-yellow shadow-2xl animate-pulse opacity-20 group-hover:opacity-40 transition-opacity" />
           <div className="w-full h-full rounded-full bg-gruvbox-gray/20 overflow-hidden border-4 border-gruvbox-yellow shadow-2xl flex items-center justify-center relative z-10">
-            {profileImage ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-full h-full"
+            >
               <Image
-                src={profileImage}
+                src={profilePic}
                 alt={name}
-                width={192}
-                height={192}
+                placeholder="blur"
                 className="w-full h-full object-cover select-none pointer-events-none"
                 draggable={false}
                 priority
               />
-            ) : (
-              <span className="font-display text-4xl font-bold text-gruvbox-yellow">{initials}</span>
-            )}
+            </motion.div>
           </div>
         </div>
 
