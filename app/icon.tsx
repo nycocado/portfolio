@@ -10,25 +10,23 @@ export const contentType = "image/png";
 
 export default function Icon() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          fontSize: 22,
-          background: "#fabd2f", // Gruvbox Yellow
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#282828", // Gruvbox Dark BG
-          borderRadius: "6px",
-          fontWeight: 900,
-          fontFamily: "monospace",
-        }}
-      >
-        {">_"}
-      </div>
-    ),
+    <div
+      style={{
+        fontSize: 22,
+        background: "#fabd2f",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#282828",
+        borderRadius: "6px",
+        fontWeight: 900,
+        fontFamily: "monospace",
+      }}
+    >
+      {">_"}
+    </div>,
     {
       ...size,
     }

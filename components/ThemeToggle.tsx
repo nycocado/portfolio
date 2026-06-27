@@ -9,13 +9,11 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : "light";
 
-    // Fallback para navegadores que não suportam View Transitions
     if (!document.startViewTransition) {
       setTheme(nextTheme);
       return;
     }
 
-    // Efeito de transição suave
     document.startViewTransition(() => {
       setTheme(nextTheme);
     });
