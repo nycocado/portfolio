@@ -2,6 +2,8 @@
 AGENTS.md
 CLAUDE.md
 .serena/
+.design-sync/
+ds-bundle/
 .claude/
 
 # DEPENDENCIES
