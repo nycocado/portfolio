@@ -15,16 +15,29 @@ export function ProjectPhotoStack({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
 
+  const viewportCenter = (scroller: HTMLDivElement) =>
+    scroller.getBoundingClientRect().left + scroller.clientWidth / 2;
+
+  const childCenter = (child: Element) => {
+    const rect = child.getBoundingClientRect();
+    return rect.left + rect.width / 2;
+  };
+
   const updateCurrent = useCallback(() => {
     const scroller = scrollerRef.current;
     if (!scroller || images.length <= 1) return;
 
-    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
-    if (maxScroll <= 0) return;
-
-    const step = maxScroll / (images.length - 1);
-    const index = Math.round(scroller.scrollLeft / step);
-    setCurrent(Math.max(0, Math.min(images.length - 1, index)));
+    const target = viewportCenter(scroller);
+    let nearest = 0;
+    let min = Infinity;
+    Array.from(scroller.children).forEach((child, i) => {
+      const dist = Math.abs(childCenter(child) - target);
+      if (dist < min) {
+        min = dist;
+        nearest = i;
+      }
+    });
+    setCurrent(nearest);
   }, [images]);
 
   useEffect(() => {
@@ -55,18 +68,18 @@ export function ProjectPhotoStack({
   const goTo = (index: number) => {
     const clamped = Math.max(0, Math.min(images.length - 1, index));
     const scroller = scrollerRef.current;
-    if (!scroller) return;
+    const child = scroller?.children[clamped] as HTMLElement | undefined;
+    if (!scroller || !child) return;
 
-    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
-    const step = maxScroll / (images.length - 1);
-    scroller.scrollTo({ left: clamped * step, behavior: "smooth" });
+    const delta = childCenter(child) - viewportCenter(scroller);
+    scroller.scrollTo({ left: scroller.scrollLeft + delta, behavior: "smooth" });
   };
 
   return (
     <div className="w-full">
       <div
         ref={scrollerRef}
-        className="relative no-scrollbar flex items-start gap-3 overflow-x-auto pb-2 -mx-8 px-8 md:mx-0 md:px-0"
+        className="relative no-scrollbar flex items-start gap-3 overflow-x-auto pb-2 -mx-8 px-8 md:mx-0 md:px-0 snap-x snap-mandatory"
       >
         {images.map((image) => (
           <Image
@@ -77,7 +90,7 @@ export function ProjectPhotoStack({
             height={image.height}
             unoptimized={image.src.endsWith(".gif")}
             draggable={false}
-            className="h-40 md:h-64 w-auto shrink-0 rounded-lg select-none"
+            className="h-40 md:h-64 w-auto shrink-0 rounded-lg select-none snap-center"
           />
         ))}
       </div>
