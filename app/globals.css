@@ -29,36 +29,6 @@
   
   --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-manrope);
-
-  --animate-scroll-left: scroll-left 60s linear infinite;
-  --animate-scroll-right: scroll-right 60s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes scroll-left {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes scroll-right {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 }
 
 ::view-transition-old(root),

@@ -41,8 +41,19 @@ A transição entre temas usa a **View Transitions API** (`document.startViewTra
 
 | Nome            | Duração  | Uso                                              |
 | --------------- | -------- | ------------------------------------------------ |
-| `scroll-left`   | `60s`    | Linhas de texto do `BackgroundText` (par → esq)  |
-| `scroll-right`  | `60s`    | Linhas de texto do `BackgroundText` (ímpar → dir)|
-| `float`         | `6s`     | Disponível via `animate-float`                   |
-| `fade-in-up`    | `0.8s`   | Disponível via `animate-fade-in-up`              |
 | `fade-in/out`   | `300ms`  | View Transitions entre temas                     |
+| fade-in (foto)  | `0.6s`   | `AnimatedPhoto` — só na primeira montagem da sessão (`framer-motion`); não repete ao trocar de idioma |
+
+## Layout da hero
+
+Split assimétrico: foto à esquerda, texto à direita alinhado à esquerda (`app/[locale]/page.tsx`). Empilha centralizado abaixo de `md:`. Ordem do texto: role (eyebrow uppercase pequeno) → nome → tagline → `SocialLinks`.
+
+## Recorte da foto — blob orgânico
+
+Abordagem de design que estamos adotando: em vez de círculo/retângulo, a foto de perfil usa um `border-radius` assimétrico para um recorte orgânico, ecoando a silhueta do abacate da logo sem copiá-la (repetir letra por letra pareceu rígido demais nos protótipos).
+
+```
+rounded-[45%_55%_58%_42%/55%_48%_52%_45%]
+```
+
+Mesma borda `border-gruvbox-yellow` do círculo antigo. Tende a valer para próximos recortes de imagem no site (ex.: fotos de projetos), como alternativa ao círculo/retângulo padrão.
