@@ -14,6 +14,32 @@
     "instagram": "Perfil do Instagram",
     "email": "Contato por email"
   },
+  "Navbar": {
+    "projects": "Projetos"
+  },
+  "Projects": {
+    "heading": "Projetos",
+    "capo": {
+      "title": "CAPO",
+      "description": "Um sistema que acompanha peças numa fábrica de tubulação industrial pelas etapas de corte, montagem e solda, liberando a próxima etapa sozinho assim que a anterior termina."
+    },
+    "speedy": {
+      "title": "Speedy",
+      "description": "Um carrinho autónomo que enxerga a pista com uma câmara, desvia de obstáculos com um LiDAR e mantém o rumo sozinho, rodando num Raspberry Pi."
+    },
+    "wash-buddy": {
+      "title": "Wash Buddy",
+      "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças, com expressões animadas, som e um cartão que reconhece quem está lavando."
+    },
+    "world-of-toilets": {
+      "title": "World of Toilets",
+      "description": "Um app que ajuda a encontrar banheiros públicos por perto, com rotas calculadas por um serviço próprio de inteligência artificial e infraestrutura pensada pra nunca cair."
+    },
+    "physics-simulator": {
+      "title": "Physics Simulator",
+      "description": "Um simulador de física de partículas pra desktop, onde dá pra ver aceleração, força e gravidade em ação, com câmera que acompanha o movimento."
+    }
+  },
   "ThemeToggle": {
     "label": "Alternar tema"
   },

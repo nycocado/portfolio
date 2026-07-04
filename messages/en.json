@@ -14,6 +14,32 @@
     "instagram": "Instagram profile",
     "email": "Email contact"
   },
+  "Navbar": {
+    "projects": "Projects"
+  },
+  "Projects": {
+    "heading": "Projects",
+    "capo": {
+      "title": "CAPO",
+      "description": "A system that tracks parts through an industrial pipe factory — cutting, assembly, welding — releasing the next stage automatically as soon as the last one's done."
+    },
+    "speedy": {
+      "title": "Speedy",
+      "description": "An autonomous race car that reads the track through a camera, dodges obstacles with LiDAR, and holds its course on its own, running on a Raspberry Pi."
+    },
+    "wash-buddy": {
+      "title": "Wash Buddy",
+      "description": "A robot that turns handwashing into a game for kids, with animated expressions, sound, and a card that recognizes who's washing up."
+    },
+    "world-of-toilets": {
+      "title": "World of Toilets",
+      "description": "An app that helps you find nearby public restrooms, with routes calculated by its own AI service and infrastructure built to never go down."
+    },
+    "physics-simulator": {
+      "title": "Physics Simulator",
+      "description": "A desktop particle physics simulator where you can watch acceleration, force and gravity play out, with a camera that follows the motion."
+    }
+  },
   "ThemeToggle": {
     "label": "Toggle theme"
   },
