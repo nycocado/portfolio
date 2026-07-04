@@ -30,7 +30,10 @@ export default async function Home({
   };
 
   return (
-    <main className="relative bg-background text-foreground transition-colors duration-300 font-sans">
+    <main
+      id="top"
+      className="relative bg-background text-foreground transition-colors duration-300 font-sans"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "./providers";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <SmoothScroll />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
