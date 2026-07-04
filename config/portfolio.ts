@@ -1,9 +1,13 @@
 import { ComponentType, SVGProps } from "react";
 import { Mail } from "lucide-react";
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+} from "@tabler/icons-react";
 
 export interface SocialLink {
-  id: "linkedin" | "github" | "email";
+  id: "linkedin" | "github" | "instagram" | "email";
   href: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
@@ -18,6 +22,11 @@ export const socialLinks: SocialLink[] = [
     id: "github",
     href: process.env.SOCIAL_GITHUB_URL!,
     icon: IconBrandGithub,
+  },
+  {
+    id: "instagram",
+    href: process.env.SOCIAL_INSTAGRAM_URL!,
+    icon: IconBrandInstagram,
   },
   {
     id: "email",
