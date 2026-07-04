@@ -12,13 +12,13 @@ O design system é construído sobre **Tailwind CSS v4** com tokens Gruvbox expo
 
 Dois conjuntos de variáveis CSS — `:root` para tema claro, `.dark` para tema escuro:
 
-| Token               | Claro (`#`)  | Escuro (`#`) | Significado                              |
-| ------------------- | ------------ | ------------ | ---------------------------------------- |
-| `--background`      | `#fbf1c7`    | `#282828`    | Fundo da página                          |
-| `--foreground`      | `#3c3836`    | `#ebdbb2`    | Texto principal                          |
-| `--gruvbox-yellow`  | `#b57614`    | `#fabd2f`    | Cor de marca — títulos, bordas, accent   |
-| `--gruvbox-gray`    | `#7c6f64`    | `#928374`    | Texto secundário — role, footer, labels  |
-| `--gruvbox-outline` | `#a89984`    | `#665c54`    | Bordas e outlines                        |
+| Token               | Claro (`#`) | Escuro (`#`) | Significado                             |
+| ------------------- | ----------- | ------------ | --------------------------------------- |
+| `--background`      | `#fbf1c7`   | `#282828`    | Fundo da página                         |
+| `--foreground`      | `#3c3836`   | `#ebdbb2`    | Texto principal                         |
+| `--gruvbox-yellow`  | `#b57614`   | `#fabd2f`    | Cor de marca — títulos, bordas, accent  |
+| `--gruvbox-gray`    | `#7c6f64`   | `#928374`    | Texto secundário — role, footer, labels |
+| `--gruvbox-outline` | `#a89984`   | `#665c54`    | Bordas e outlines                       |
 
 Todos os tokens são expostos ao Tailwind via `@theme inline` como `color-*`, permitindo uso directo com `text-gruvbox-yellow`, `border-gruvbox-outline`, etc.
 
@@ -26,10 +26,10 @@ Todos os tokens são expostos ao Tailwind via `@theme inline` como `color-*`, pe
 
 Duas fontes carregadas via `next/font/google`, ambas com `display: swap`:
 
-| Variável CSS            | Fonte          | Alias Tailwind  | Uso                               |
-| ----------------------- | -------------- | --------------- | --------------------------------- |
-| `--font-space-grotesk`  | Space Grotesk  | `font-display`  | Títulos — nome, headings          |
-| `--font-manrope`        | Manrope        | `font-sans`     | Corpo — role, footer, botões, UI  |
+| Variável CSS           | Fonte         | Alias Tailwind | Uso                              |
+| ---------------------- | ------------- | -------------- | -------------------------------- |
+| `--font-space-grotesk` | Space Grotesk | `font-display` | Títulos — nome, headings         |
+| `--font-manrope`       | Manrope       | `font-sans`    | Corpo — role, footer, botões, UI |
 
 ## Tema claro/escuro
 
@@ -39,10 +39,10 @@ A transição entre temas usa a **View Transitions API** (`document.startViewTra
 
 ## Animações
 
-| Nome            | Duração  | Uso                                              |
-| --------------- | -------- | ------------------------------------------------ |
-| `fade-in/out`   | `300ms`  | View Transitions entre temas                     |
-| fade-in (foto)  | `0.6s`   | `AnimatedPhoto` — só na primeira montagem da sessão (`framer-motion`); não repete ao trocar de idioma |
+| Nome           | Duração | Uso                                                                                                   |
+| -------------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| `fade-in/out`  | `300ms` | View Transitions entre temas                                                                          |
+| fade-in (foto) | `0.6s`  | `AnimatedPhoto` — só na primeira montagem da sessão (`framer-motion`); não repete ao trocar de idioma |
 
 ## Layout da hero
 
