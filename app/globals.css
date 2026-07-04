@@ -26,7 +26,7 @@
   --color-gruvbox-yellow: var(--gruvbox-yellow);
   --color-gruvbox-gray: var(--gruvbox-gray);
   --color-gruvbox-outline: var(--gruvbox-outline);
-  
+
   --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-manrope);
 }
@@ -46,17 +46,35 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

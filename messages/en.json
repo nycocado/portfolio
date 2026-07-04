@@ -21,7 +21,8 @@
     "heading": "Projects",
     "capo": {
       "title": "CAPO",
-      "period": "Feb 2025 - Jul 2025 · IADE - Creative University",
+      "period": "Feb 2025 - Jul 2025",
+      "institution": "IADE - Creative University",
       "description": "A system that tracks parts through an industrial pipe factory — cutting, assembly, welding — releasing the next stage automatically as soon as the last one's done.",
       "highlights": [
         "Each operator only sees the stage of their own role — cutting, assembly, or welding.",
@@ -31,7 +32,8 @@
     },
     "speedy": {
       "title": "Speedy",
-      "period": "Feb 2026 - Jul 2026 · IADE - Creative University",
+      "period": "Feb 2026 - Jul 2026",
+      "institution": "IADE - Creative University",
       "description": "An autonomous race car that reads the track through a camera, dodges obstacles with LiDAR, and holds its course on its own, running on a Raspberry Pi.",
       "highlights": [
         "Fuses camera, LiDAR and motion sensors to know exactly where it is and where it's headed.",
@@ -41,7 +43,8 @@
     },
     "wash-buddy": {
       "title": "Wash Buddy",
-      "period": "Feb 2026 - Jul 2026 · IADE - Creative University",
+      "period": "Feb 2026 - Jul 2026",
+      "institution": "IADE - Creative University",
       "description": "A robot that turns handwashing into a game for kids, with animated expressions, sound, and a card that recognizes who's washing up.",
       "highlights": [
         "An RFID card recognizes who's washing their hands.",
@@ -51,7 +54,8 @@
     },
     "world-of-toilets": {
       "title": "World of Toilets",
-      "period": "Sep 2024 - Dec 2025 · IADE - Creative University",
+      "period": "Sep 2024 - Dec 2025",
+      "institution": "IADE - Creative University",
       "description": "An app that helps you find nearby public restrooms, with routes calculated by its own AI service and infrastructure built to never go down.",
       "highlights": [
         "Mobile and web apps share the same backend, with routes computed by its own AI service.",
@@ -61,7 +65,8 @@
     },
     "physics-simulator": {
       "title": "Physics Simulator",
-      "period": "Jan 2024 - Jun 2024 · IADE - Creative University",
+      "period": "Jan 2024 - Jun 2024",
+      "institution": "IADE - Creative University",
       "description": "A desktop particle physics simulator where you can watch acceleration, force and gravity play out, with a camera that follows the motion.",
       "highlights": [
         "Two modes: constant acceleration, or full physics with configurable force and gravity.",

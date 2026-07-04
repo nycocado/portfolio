@@ -41,7 +41,11 @@ export function ProjectsSection() {
         </nav>
 
         <article className="flex-1 flex flex-col gap-6">
-          <ProjectPhotoStack key={selected.id} images={selected.images} alt={t(`${selected.id}.title`)} />
+          <ProjectPhotoStack
+            key={selected.id}
+            images={selected.images}
+            alt={t(`${selected.id}.title`)}
+          />
 
           <div>
             <h3 className="font-display text-2xl md:text-3xl font-bold text-gruvbox-yellow">
@@ -50,12 +54,18 @@ export function ProjectsSection() {
             <p className="mt-1 text-xs uppercase tracking-widest text-gruvbox-gray/60">
               {t(`${selected.id}.period`)}
             </p>
+            <p className="text-xs uppercase tracking-widest text-gruvbox-gray/60">
+              {t(`${selected.id}.institution`)}
+            </p>
             <p className="mt-4 text-gruvbox-gray/90 max-w-2xl">
               {t(`${selected.id}.description`)}
             </p>
             <ul className="mt-4 space-y-2 max-w-2xl">
               {highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-2 text-sm text-gruvbox-gray/80">
+                <li
+                  key={highlight}
+                  className="flex gap-2 text-sm text-gruvbox-gray/80"
+                >
                   <span className="text-gruvbox-yellow">·</span>
                   {highlight}
                 </li>
@@ -65,7 +75,7 @@ export function ProjectsSection() {
               {selected.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-2.5 py-1 rounded-full border border-gruvbox-outline text-gruvbox-gray"
+                  className="text-xs px-2.5 py-1 rounded-full border border-gruvbox-outline text-gruvbox-gray transition-all duration-200 hover:border-gruvbox-yellow hover:text-gruvbox-yellow hover:scale-105"
                 >
                   {tag}
                 </span>

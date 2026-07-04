@@ -21,7 +21,8 @@
     "heading": "Projetos",
     "capo": {
       "title": "CAPO",
-      "period": "Fev 2025 - Jul 2025 · IADE - Creative University",
+      "period": "Fev 2025 - Jul 2025",
+      "institution": "IADE - Creative University",
       "description": "Um sistema que acompanha peças numa fábrica de tubulação industrial pelas etapas de corte, montagem e solda, liberando a próxima etapa sozinho assim que a anterior termina.",
       "highlights": [
         "Cada operador só vê a etapa do seu papel — corte, montagem ou solda.",
@@ -31,7 +32,8 @@
     },
     "speedy": {
       "title": "Speedy",
-      "period": "Fev 2026 - Jul 2026 · IADE - Creative University",
+      "period": "Fev 2026 - Jul 2026",
+      "institution": "IADE - Creative University",
       "description": "Um carrinho autónomo que enxerga a pista com uma câmara, desvia de obstáculos com um LiDAR e mantém o rumo sozinho, rodando num Raspberry Pi.",
       "highlights": [
         "Funde câmara, LiDAR e sensores de movimento pra saber exatamente onde está e pra onde vai.",
@@ -41,7 +43,8 @@
     },
     "wash-buddy": {
       "title": "Wash Buddy",
-      "period": "Fev 2026 - Jul 2026 · IADE - Creative University",
+      "period": "Fev 2026 - Jul 2026",
+      "institution": "IADE - Creative University",
       "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças, com expressões animadas, som e um cartão que reconhece quem está lavando.",
       "highlights": [
         "Um cartão com RFID reconhece quem está lavando as mãos.",
@@ -51,7 +54,8 @@
     },
     "world-of-toilets": {
       "title": "World of Toilets",
-      "period": "Set 2024 - Dez 2025 · IADE - Creative University",
+      "period": "Set 2024 - Dez 2025",
+      "institution": "IADE - Creative University",
       "description": "Um app que ajuda a encontrar banheiros públicos por perto, com rotas calculadas por um serviço próprio de inteligência artificial e infraestrutura pensada pra nunca cair.",
       "highlights": [
         "App mobile e web compartilham a mesma base, com rotas calculadas por um serviço próprio de IA.",
@@ -61,7 +65,8 @@
     },
     "physics-simulator": {
       "title": "Physics Simulator",
-      "period": "Jan 2024 - Jun 2024 · IADE - Creative University",
+      "period": "Jan 2024 - Jun 2024",
+      "institution": "IADE - Creative University",
       "description": "Um simulador de física de partículas pra desktop, onde dá pra ver aceleração, força e gravidade em ação, com câmera que acompanha o movimento.",
       "highlights": [
         "Dois modos: aceleração constante, ou física completa com força e gravidade configuráveis.",
