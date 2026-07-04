@@ -15,6 +15,7 @@ export default async function Home({
   const t = await getTranslations("Hero");
   const name = t("name");
   const role = t("role");
+  const tagline = t("tagline");
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -35,24 +36,24 @@ export default async function Home({
       />
       <Navbar />
 
-      <div className="flex flex-col items-center justify-center space-y-8 z-10 w-full max-w-4xl">
-        <div className="relative w-32 h-32 md:w-48 md:h-48 group">
-          <div className="absolute inset-0 rounded-full border-4 border-gruvbox-yellow shadow-2xl animate-pulse opacity-20 group-hover:opacity-40 transition-opacity" />
-          <div className="w-full h-full rounded-full bg-gruvbox-gray/20 overflow-hidden border-4 border-gruvbox-yellow shadow-2xl flex items-center justify-center relative z-10">
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 z-10 w-full max-w-4xl">
+        <div className="relative w-[13rem] h-[15rem] md:w-[19rem] md:h-[21.5rem] shrink-0 group">
+          <div className="absolute inset-0 rounded-[45%_55%_58%_42%/55%_48%_52%_45%] border-4 border-gruvbox-yellow shadow-2xl animate-pulse opacity-20 group-hover:opacity-40 transition-opacity" />
+          <div className="w-full h-full rounded-[45%_55%_58%_42%/55%_48%_52%_45%] bg-gruvbox-gray/20 overflow-hidden border-4 border-gruvbox-yellow shadow-2xl flex items-center justify-center relative z-10">
             <AnimatedPhoto src={profilePic} alt={name} />
           </div>
         </div>
 
-        <div className="text-center space-y-4">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
+          <span className="font-sans text-xs md:text-sm font-bold uppercase tracking-widest text-gruvbox-gray/80">
+            {role}
+          </span>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-gruvbox-yellow tracking-tight drop-shadow-sm">
             {name}
           </h1>
-          <p className="font-sans text-lg md:text-2xl text-gruvbox-gray/90 font-medium max-w-2xl mx-auto leading-relaxed">
-            {role}
+          <p className="font-sans text-lg md:text-2xl text-gruvbox-gray/90 font-medium max-w-xl leading-relaxed">
+            {tagline}
           </p>
-        </div>
-
-        <div className="flex flex-col items-center gap-6">
           <SocialLinks />
         </div>
       </div>
