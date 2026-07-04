@@ -1,4 +1,12 @@
+<div align="center">
+
 # portfolio
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="media/logo-light.png">
+  <img alt="nycocado" src="media/logo-light.png">
+</picture>
 
 Portfólio pessoal — projetos, stack e trajetória como desenvolvedor de software.
 
@@ -11,6 +19,8 @@ Portfólio pessoal — projetos, stack e trajetória como desenvolvedor de softw
 [![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 
 Português | [English](README.md)
+
+</div>
 
 ## Sobre
 

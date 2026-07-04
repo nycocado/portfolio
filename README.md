@@ -1,4 +1,12 @@
+<div align="center">
+
 # portfolio
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="media/logo-light.png">
+  <img alt="nycocado" src="media/logo-light.png">
+</picture>
 
 ![Status](https://img.shields.io/badge/status-in%20development-6f42c1)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-3da639.svg)](LICENCE.md)
@@ -9,6 +17,8 @@
 [![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 
 [Portuguese](README.pt.md) | English
+
+</div>
 
 ## About
 
