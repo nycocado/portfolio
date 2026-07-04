@@ -21,23 +21,53 @@
     "heading": "Projetos",
     "capo": {
       "title": "CAPO",
-      "description": "Um sistema que acompanha peças numa fábrica de tubulação industrial pelas etapas de corte, montagem e solda, liberando a próxima etapa sozinho assim que a anterior termina."
+      "period": "Fev 2025 - Jul 2025 · IADE - Creative University",
+      "description": "Um sistema que acompanha peças numa fábrica de tubulação industrial pelas etapas de corte, montagem e solda, liberando a próxima etapa sozinho assim que a anterior termina.",
+      "highlights": [
+        "Cada operador só vê a etapa do seu papel — corte, montagem ou solda.",
+        "A próxima etapa libera sozinha assim que a anterior termina, sem duplicar dados.",
+        "Atualiza em tempo real: quem está na etapa seguinte já vê a nova ordem sem recarregar a página."
+      ]
     },
     "speedy": {
       "title": "Speedy",
-      "description": "Um carrinho autónomo que enxerga a pista com uma câmara, desvia de obstáculos com um LiDAR e mantém o rumo sozinho, rodando num Raspberry Pi."
+      "period": "Fev 2026 - Jul 2026 · IADE - Creative University",
+      "description": "Um carrinho autónomo que enxerga a pista com uma câmara, desvia de obstáculos com um LiDAR e mantém o rumo sozinho, rodando num Raspberry Pi.",
+      "highlights": [
+        "Funde câmara, LiDAR e sensores de movimento pra saber exatamente onde está e pra onde vai.",
+        "Reconhece placas e obstáculos na pista com um modelo de visão treinado do zero.",
+        "Roda inteiro num Raspberry Pi 4, sem depender de um computador externo."
+      ]
     },
     "wash-buddy": {
       "title": "Wash Buddy",
-      "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças, com expressões animadas, som e um cartão que reconhece quem está lavando."
+      "period": "Fev 2026 - Jul 2026 · IADE - Creative University",
+      "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças, com expressões animadas, som e um cartão que reconhece quem está lavando.",
+      "highlights": [
+        "Um cartão com RFID reconhece quem está lavando as mãos.",
+        "O rosto animado no display muda de expressão conforme a etapa da lavagem.",
+        "A placa própria desliga sozinha quando ociosa, sem gastar energia à toa."
+      ]
     },
     "world-of-toilets": {
       "title": "World of Toilets",
-      "description": "Um app que ajuda a encontrar banheiros públicos por perto, com rotas calculadas por um serviço próprio de inteligência artificial e infraestrutura pensada pra nunca cair."
+      "period": "Set 2024 - Dez 2025 · IADE - Creative University",
+      "description": "Um app que ajuda a encontrar banheiros públicos por perto, com rotas calculadas por um serviço próprio de inteligência artificial e infraestrutura pensada pra nunca cair.",
+      "highlights": [
+        "App mobile e web compartilham a mesma base, com rotas calculadas por um serviço próprio de IA.",
+        "Infraestrutura em contêineres com banco de dados replicado em 3 nós, pensada pra nunca cair.",
+        "Login com permissões bem granulares e proteção contra os ataques mais comuns."
+      ]
     },
     "physics-simulator": {
       "title": "Physics Simulator",
-      "description": "Um simulador de física de partículas pra desktop, onde dá pra ver aceleração, força e gravidade em ação, com câmera que acompanha o movimento."
+      "period": "Jan 2024 - Jun 2024 · IADE - Creative University",
+      "description": "Um simulador de física de partículas pra desktop, onde dá pra ver aceleração, força e gravidade em ação, com câmera que acompanha o movimento.",
+      "highlights": [
+        "Dois modos: aceleração constante, ou física completa com força e gravidade configuráveis.",
+        "Câmera com zoom automático e um modo que segue a partícula em movimento.",
+        "Salva e recarrega simulações inteiras através de arquivos de projeto próprios."
+      ]
     }
   },
   "ThemeToggle": {

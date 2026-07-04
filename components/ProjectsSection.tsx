@@ -9,9 +9,13 @@ export function ProjectsSection() {
   const t = useTranslations("Projects");
   const [selectedId, setSelectedId] = useState(projects[0].id);
   const selected = projects.find((project) => project.id === selectedId)!;
+  const highlights = t.raw(`${selected.id}.highlights`) as string[];
 
   return (
-    <section id="projects" className="w-full max-w-4xl mx-auto py-24 px-8">
+    <section
+      id="projects"
+      className="min-h-screen flex flex-col w-full max-w-4xl mx-auto pt-24 pb-24 px-8"
+    >
       <h2 className="font-display text-3xl md:text-4xl font-bold text-gruvbox-yellow mb-12">
         {t("heading")}
       </h2>
@@ -40,13 +44,24 @@ export function ProjectsSection() {
           <ProjectPhotoStack key={selected.id} images={selected.images} alt={t(`${selected.id}.title`)} />
 
           <div>
-            <h3 className="font-display text-2xl font-bold text-gruvbox-yellow">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-gruvbox-yellow">
               {t(`${selected.id}.title`)}
             </h3>
-            <p className="mt-3 text-gruvbox-gray/90 max-w-md">
+            <p className="mt-1 text-xs uppercase tracking-widest text-gruvbox-gray/60">
+              {t(`${selected.id}.period`)}
+            </p>
+            <p className="mt-4 text-gruvbox-gray/90 max-w-2xl">
               {t(`${selected.id}.description`)}
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <ul className="mt-4 space-y-2 max-w-2xl">
+              {highlights.map((highlight) => (
+                <li key={highlight} className="flex gap-2 text-sm text-gruvbox-gray/80">
+                  <span className="text-gruvbox-yellow">·</span>
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 flex flex-wrap gap-2">
               {selected.tags.map((tag) => (
                 <span
                   key={tag}
@@ -60,7 +75,7 @@ export function ProjectsSection() {
               href={selected.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-sm text-gruvbox-yellow hover:underline"
+              className="mt-5 inline-block text-sm text-gruvbox-yellow hover:underline"
             >
               GitHub →
             </a>

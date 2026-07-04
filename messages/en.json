@@ -21,23 +21,53 @@
     "heading": "Projects",
     "capo": {
       "title": "CAPO",
-      "description": "A system that tracks parts through an industrial pipe factory — cutting, assembly, welding — releasing the next stage automatically as soon as the last one's done."
+      "period": "Feb 2025 - Jul 2025 · IADE - Creative University",
+      "description": "A system that tracks parts through an industrial pipe factory — cutting, assembly, welding — releasing the next stage automatically as soon as the last one's done.",
+      "highlights": [
+        "Each operator only sees the stage of their own role — cutting, assembly, or welding.",
+        "The next stage unlocks by itself as soon as the previous one's done, with no duplicated data.",
+        "Updates in real time: the next station sees the new order without reloading the page."
+      ]
     },
     "speedy": {
       "title": "Speedy",
-      "description": "An autonomous race car that reads the track through a camera, dodges obstacles with LiDAR, and holds its course on its own, running on a Raspberry Pi."
+      "period": "Feb 2026 - Jul 2026 · IADE - Creative University",
+      "description": "An autonomous race car that reads the track through a camera, dodges obstacles with LiDAR, and holds its course on its own, running on a Raspberry Pi.",
+      "highlights": [
+        "Fuses camera, LiDAR and motion sensors to know exactly where it is and where it's headed.",
+        "Recognizes signs and obstacles on the track with a vision model trained from scratch.",
+        "Runs entirely on a Raspberry Pi 4, no external computer needed."
+      ]
     },
     "wash-buddy": {
       "title": "Wash Buddy",
-      "description": "A robot that turns handwashing into a game for kids, with animated expressions, sound, and a card that recognizes who's washing up."
+      "period": "Feb 2026 - Jul 2026 · IADE - Creative University",
+      "description": "A robot that turns handwashing into a game for kids, with animated expressions, sound, and a card that recognizes who's washing up.",
+      "highlights": [
+        "An RFID card recognizes who's washing their hands.",
+        "The animated face on the display changes expression as the wash cycle progresses.",
+        "Its own circuit board shuts itself off when idle, so it never wastes power on standby."
+      ]
     },
     "world-of-toilets": {
       "title": "World of Toilets",
-      "description": "An app that helps you find nearby public restrooms, with routes calculated by its own AI service and infrastructure built to never go down."
+      "period": "Sep 2024 - Dec 2025 · IADE - Creative University",
+      "description": "An app that helps you find nearby public restrooms, with routes calculated by its own AI service and infrastructure built to never go down.",
+      "highlights": [
+        "Mobile and web apps share the same backend, with routes computed by its own AI service.",
+        "Container infrastructure with a 3-node replicated database, built to never go down.",
+        "Fine-grained login permissions and protection against the most common attacks."
+      ]
     },
     "physics-simulator": {
       "title": "Physics Simulator",
-      "description": "A desktop particle physics simulator where you can watch acceleration, force and gravity play out, with a camera that follows the motion."
+      "period": "Jan 2024 - Jun 2024 · IADE - Creative University",
+      "description": "A desktop particle physics simulator where you can watch acceleration, force and gravity play out, with a camera that follows the motion.",
+      "highlights": [
+        "Two modes: constant acceleration, or full physics with configurable force and gravity.",
+        "Camera with automatic zoom and a mode that follows the particle in motion.",
+        "Saves and reloads entire simulations through its own project files."
+      ]
     }
   },
   "ThemeToggle": {
