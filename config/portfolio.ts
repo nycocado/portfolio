@@ -1,48 +1,27 @@
-import { IconType } from "react-icons";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { ComponentType, SVGProps } from "react";
+import { Mail } from "lucide-react";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 
 export interface SocialLink {
-  name: string;
+  id: "linkedin" | "github" | "email";
   href: string;
-  icon: IconType;
-  label: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
-export interface PortfolioConfig {
-  name: string;
-  role: string;
-  initials: string;
-  profileImage?: string;
-  cvPath?: string;
-  motto: string;
-  socials: SocialLink[];
-}
-
-export const portfolioConfig: PortfolioConfig = {
-  name: "Nycolas Souza",
-  role: "Junior Full-Stack Developer | Engineering Student",
-  initials: "NS",
-  profileImage: "/photo.webp",
-  cvPath: "/cv.pdf",
-  motto: "Precision • Scalability • Architecture",
-  socials: [
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/nycocado",
-      icon: FaLinkedin,
-      label: "LinkedIn profile",
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/nycocado",
-      icon: FaGithub,
-      label: "GitHub profile",
-    },
-    {
-      name: "Email",
-      href: "mailto:nycolascanutto@gmail.com",
-      icon: FaEnvelope,
-      label: "Email contact",
-    },
-  ],
-};
+export const socialLinks: SocialLink[] = [
+  {
+    id: "linkedin",
+    href: process.env.SOCIAL_LINKEDIN_URL!,
+    icon: IconBrandLinkedin,
+  },
+  {
+    id: "github",
+    href: process.env.SOCIAL_GITHUB_URL!,
+    icon: IconBrandGithub,
+  },
+  {
+    id: "email",
+    href: `mailto:${process.env.SOCIAL_EMAIL}`,
+    icon: Mail,
+  },
+];

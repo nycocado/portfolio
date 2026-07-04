@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(12.5,0,0,12.5,0,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"><rect width="80" height="80" rx="18" fill="#fabd2f"></rect><svg x="20" y="11" width="40" height="54" viewBox="0 0 40 54">
+    <path d="M21,4 C22,1 25,1 25.5,3.5 C25,5 22,5.5 21,4Z" fill="#79740e"></path>
+    <path d="M20,4 C25,4 38,13 38,29 C38,45 30,52 20,52 C10,52 2,45 2,29 C2,13 15,4 20,4Z" fill="#282828"></path>
+    <circle cx="20" cy="33" r="9" fill="#fabd2f"></circle>
+  </svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(12.5,0,0,12.5,0,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"><defs>
+    <radialGradient id="g" cx="38%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#ffd03a"></stop>
+      <stop offset="100%" stop-color="#fabd2f"></stop>
+    </radialGradient>
+  </defs><rect width="80" height="80" rx="18" fill="#282828"></rect><svg x="20" y="11" width="40" height="54" viewBox="0 0 40 54">
+    <path d="M21,4 C22,1 25,1 25.5,3.5 C25,5 22,5.5 21,4Z" fill="#98971a"></path>
+    <path d="M20,4 C25,4 38,13 38,29 C38,45 30,52 20,52 C10,52 2,45 2,29 C2,13 15,4 20,4Z" fill="url(#g)"></path>
+    <circle cx="20" cy="33" r="9" fill="#282828"></circle>
+  </svg></svg></g></g></svg></g></svg>

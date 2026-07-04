@@ -1,0 +1,22 @@
+{
+  "Metadata": {
+    "title": "Nycolas Souza | Portfolio",
+    "description": "Backend Software Engineer"
+  },
+  "Hero": {
+    "name": "Nycolas Souza",
+    "role": "Backend Software Engineer",
+    "tagline": "When an idea makes sense, I like seeing how far it goes."
+  },
+  "Social": {
+    "linkedin": "LinkedIn profile",
+    "github": "GitHub profile",
+    "email": "Email contact"
+  },
+  "ThemeToggle": {
+    "label": "Toggle theme"
+  },
+  "LanguageSwitcher": {
+    "label": "Switch language"
+  }
+}
