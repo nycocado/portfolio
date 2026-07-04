@@ -5,7 +5,8 @@ export interface ProjectImage {
 }
 
 export interface Project {
-  id: "capo" | "speedy" | "wash-buddy" | "world-of-toilets" | "physics-simulator";
+  id:
+    "capo" | "speedy" | "wash-buddy" | "world-of-toilets" | "physics-simulator";
   githubUrl: string;
   tags: string[];
   images: ProjectImage[];
@@ -20,7 +21,6 @@ export const projects: Project[] = [
       { src: "/projects/capo/01.gif", width: 800, height: 450 },
       { src: "/projects/capo/02.gif", width: 800, height: 450 },
       { src: "/projects/capo/03.gif", width: 800, height: 450 },
-      { src: "/projects/capo/04.gif", width: 1000, height: 625 },
     ],
   },
   {
@@ -28,10 +28,16 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/nycocado/speedy",
     tags: ["ROS 2", "C++", "Python", "OpenCV"],
     images: [
-      { src: "/projects/speedy/01.webp", width: 1200, height: 545 },
-      { src: "/projects/speedy/02.webp", width: 800, height: 1200 },
+      { src: "/projects/speedy/01.webp", width: 1200, height: 721 },
+      { src: "/projects/speedy/02.webp", width: 1200, height: 800 },
       { src: "/projects/speedy/03.webp", width: 1200, height: 800 },
-      { src: "/projects/speedy/04.webp", width: 800, height: 1200 },
+      { src: "/projects/speedy/04.webp", width: 1200, height: 800 },
+      { src: "/projects/speedy/05.webp", width: 1200, height: 800 },
+      { src: "/projects/speedy/06.webp", width: 1200, height: 800 },
+      { src: "/projects/speedy/07.webp", width: 1200, height: 800 },
+      { src: "/projects/speedy/08.webp", width: 800, height: 1200 },
+      { src: "/projects/speedy/09.webp", width: 800, height: 1200 },
+      { src: "/projects/speedy/10.webp", width: 800, height: 1200 },
     ],
   },
   {
@@ -39,17 +45,87 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/nycocado/wash-buddy",
     tags: ["C++", "Arduino", "Embedded systems", "IoT"],
     images: [
-      { src: "/projects/wash-buddy/01.webp", width: 1200, height: 900 },
-      { src: "/projects/wash-buddy/02.webp", width: 1200, height: 675 },
-      { src: "/projects/wash-buddy/03.webp", width: 1200, height: 675 },
-      { src: "/projects/wash-buddy/04.webp", width: 991, height: 1119 },
+      { src: "/projects/wash-buddy/01.webp", width: 878, height: 1200 },
+      { src: "/projects/wash-buddy/02.webp", width: 1200, height: 977 },
+      { src: "/projects/wash-buddy/03.webp", width: 1200, height: 900 },
+      { src: "/projects/wash-buddy/04.webp", width: 1200, height: 675 },
+      { src: "/projects/wash-buddy/05.webp", width: 1200, height: 675 },
+      { src: "/projects/wash-buddy/06.webp", width: 1200, height: 675 },
+      { src: "/projects/wash-buddy/07.webp", width: 1200, height: 675 },
+      { src: "/projects/wash-buddy/08.webp", width: 1200, height: 675 },
     ],
   },
   {
     id: "world-of-toilets",
     githubUrl: "https://github.com/nycocado/worldoftoilets",
     tags: ["NestJS", "Kotlin", "Docker", "gRPC"],
-    images: [],
+    images: [
+      {
+        src: "/projects/world-of-toilets/mobile-01.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-02.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-03.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-04.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-05.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-06.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-07.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/mobile-08.webp",
+        width: 486,
+        height: 1080,
+      },
+      {
+        src: "/projects/world-of-toilets/web-01.webp",
+        width: 1200,
+        height: 675,
+      },
+      {
+        src: "/projects/world-of-toilets/web-02.webp",
+        width: 1200,
+        height: 675,
+      },
+      {
+        src: "/projects/world-of-toilets/web-03.webp",
+        width: 1200,
+        height: 675,
+      },
+      {
+        src: "/projects/world-of-toilets/web-04.webp",
+        width: 1200,
+        height: 675,
+      },
+      {
+        src: "/projects/world-of-toilets/web-05.webp",
+        width: 1200,
+        height: 675,
+      },
+    ],
   },
   {
     id: "physics-simulator",
