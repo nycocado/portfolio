@@ -71,7 +71,7 @@ export function ProjectPhotoStack({
 
   if (images.length === 0) {
     return (
-      <div className="w-full h-40 md:h-64 shrink-0 rounded-lg border border-dashed border-gruvbox-outline flex items-center justify-center text-xs text-gruvbox-gray/60 text-center px-4">
+      <div className="w-full h-40 md:h-64 shrink-0 rounded-lg border border-dashed border-gruvbox-outline flex items-center justify-center text-xs text-gruvbox-gray/90 text-center px-4">
         Imagem em breve
       </div>
     );
@@ -147,14 +147,14 @@ export function ProjectPhotoStack({
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center">
             {images.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => goTo(i)}
                 aria-label={`Photo ${i + 1}`}
-                className="p-2.5 -m-2.5 cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center cursor-pointer"
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${

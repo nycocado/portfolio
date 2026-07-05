@@ -4,7 +4,7 @@ import {
   IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
-} from "@tabler/icons-react";
+} from "@/components/BrandIcons";
 
 export interface SocialLink {
   id: "linkedin" | "github" | "instagram" | "email";

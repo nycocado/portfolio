@@ -50,7 +50,7 @@ export default async function Home({
           </div>
 
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-            <span className="font-sans text-xs md:text-sm font-bold uppercase tracking-widest text-gruvbox-gray/80">
+            <span className="font-sans text-xs md:text-sm font-bold uppercase tracking-widest text-gruvbox-gray/90">
               {role}
             </span>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-gruvbox-yellow tracking-tight drop-shadow-sm">

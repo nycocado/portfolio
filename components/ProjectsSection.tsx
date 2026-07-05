@@ -31,7 +31,7 @@ export function ProjectsSection() {
                 className={`text-sm text-left py-2 px-3 md:px-0 md:pl-3 border-b-2 md:border-b-0 md:border-l-2 whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
                     ? "border-gruvbox-yellow text-gruvbox-yellow font-bold"
-                    : "border-transparent text-gruvbox-gray/60 hover:text-gruvbox-gray"
+                    : "border-transparent text-gruvbox-gray/90 hover:text-gruvbox-gray"
                 }`}
               >
                 {t(`${project.id}.title`)}
@@ -51,10 +51,10 @@ export function ProjectsSection() {
             <h3 className="font-display text-2xl md:text-3xl font-bold text-gruvbox-yellow">
               {t(`${selected.id}.title`)}
             </h3>
-            <p className="mt-1 text-xs uppercase tracking-widest text-gruvbox-gray/60">
+            <p className="mt-1 text-xs uppercase tracking-widest text-gruvbox-gray/90">
               {t(`${selected.id}.period`)}
             </p>
-            <p className="text-xs uppercase tracking-widest text-gruvbox-gray/60">
+            <p className="text-xs uppercase tracking-widest text-gruvbox-gray/90">
               {t(`${selected.id}.institution`)}
             </p>
             <p className="mt-4 text-gruvbox-gray/90 max-w-2xl">
@@ -64,7 +64,7 @@ export function ProjectsSection() {
               {highlights.map((highlight) => (
                 <li
                   key={highlight}
-                  className="flex gap-2 text-sm text-gruvbox-gray/80"
+                  className="flex gap-2 text-sm text-gruvbox-gray/90"
                 >
                   <span className="text-gruvbox-yellow">·</span>
                   {highlight}
