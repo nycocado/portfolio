@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "./providers";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE_URL } from "@/lib/site";
+import { routing } from "@/i18n/routing";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,15 +24,13 @@ const manrope = Manrope({
   display: "swap",
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={routing.defaultLocale} suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} ${manrope.variable} antialiased min-h-screen`}
       >

@@ -30,7 +30,7 @@ export function ProjectsSection() {
                 onClick={() => setSelectedId(project.id)}
                 className={`text-sm text-left py-2 px-3 md:px-0 md:pl-3 border-b-2 md:border-b-0 md:border-l-2 whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
-                    ? "border-gruvbox-yellow text-gruvbox-yellow font-bold"
+                    ? "border-gruvbox-yellow text-gruvbox-yellow-aa font-bold"
                     : "border-transparent text-gruvbox-gray/90 hover:text-gruvbox-gray"
                 }`}
               >
@@ -85,7 +85,7 @@ export function ProjectsSection() {
               href={selected.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-block text-sm text-gruvbox-yellow hover:underline"
+              className="mt-5 inline-block text-sm text-gruvbox-yellow-aa hover:underline"
             >
               GitHub →
             </a>

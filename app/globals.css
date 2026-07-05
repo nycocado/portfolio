@@ -7,6 +7,7 @@
   --background: #fbf1c7;
   --foreground: #3c3836;
   --gruvbox-yellow: #b57614;
+  --gruvbox-yellow-aa: #925f10;
   --gruvbox-gray: #665c54;
   --gruvbox-outline: #a89984;
 }
@@ -16,6 +17,7 @@
   --background: #282828;
   --foreground: #ebdbb2;
   --gruvbox-yellow: #fabd2f;
+  --gruvbox-yellow-aa: #fabd2f;
   --gruvbox-gray: #a89984;
   --gruvbox-outline: #665c54;
 }
@@ -24,6 +26,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-gruvbox-yellow: var(--gruvbox-yellow);
+  --color-gruvbox-yellow-aa: var(--gruvbox-yellow-aa);
   --color-gruvbox-gray: var(--gruvbox-gray);
   --color-gruvbox-outline: var(--gruvbox-outline);
 
