@@ -18,9 +18,9 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/nycocado/capo",
     tags: ["NestJS", "Next.js", "MariaDB", "Docker"],
     images: [
-      { src: "/projects/capo/01.gif", width: 800, height: 450 },
-      { src: "/projects/capo/02.gif", width: 800, height: 450 },
-      { src: "/projects/capo/03.gif", width: 800, height: 450 },
+      { src: "/projects/capo/01.webm", width: 1920, height: 1080 },
+      { src: "/projects/capo/02.webm", width: 1920, height: 1080 },
+      { src: "/projects/capo/03.webm", width: 1920, height: 1080 },
     ],
   },
   {

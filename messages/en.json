@@ -36,8 +36,8 @@
       "institution": "IADE - Creative University",
       "description": "An autonomous race car that reads the track through a camera, dodges obstacles with LiDAR, and holds its course on its own, running on a Raspberry Pi.",
       "highlights": [
-        "Fuses camera, LiDAR and motion sensors to know exactly where it is and where it's headed.",
-        "Recognizes signs and obstacles on the track with a vision model trained from scratch.",
+        "Camera follows the lane, LiDAR dodges obstacles, gyro holds the heading.",
+        "Recognizes signs and obstacles with a vision model trained on its own dataset.",
         "Runs entirely on a Raspberry Pi 4, no external computer needed."
       ]
     },
@@ -45,9 +45,9 @@
       "title": "Wash Buddy",
       "period": "Feb 2026 - Jul 2026",
       "institution": "IADE - Creative University",
-      "description": "A robot that turns handwashing into a game for kids, with animated expressions, sound, and a card that recognizes who's washing up.",
+      "description": "A robot that turns handwashing into a game for kids: RFID-tagged toys — soap, sponge, towel — guide it step by step through the wash cycle, with animated expressions and synced audio, no app needed.",
       "highlights": [
-        "An RFID card recognizes who's washing their hands.",
+        "RFID-tagged toys — soap, sponge, towel — advance the wash cycle.",
         "The animated face on the display changes expression as the wash cycle progresses.",
         "Its own circuit board shuts itself off when idle, so it never wastes power on standby."
       ]

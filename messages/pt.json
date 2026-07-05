@@ -36,8 +36,8 @@
       "institution": "IADE - Creative University",
       "description": "Um carrinho autónomo que enxerga a pista com uma câmara, desvia de obstáculos com um LiDAR e mantém o rumo sozinho, rodando num Raspberry Pi.",
       "highlights": [
-        "Funde câmara, LiDAR e sensores de movimento pra saber exatamente onde está e pra onde vai.",
-        "Reconhece placas e obstáculos na pista com um modelo de visão treinado do zero.",
+        "Câmara segue a faixa, LiDAR desvia de obstáculos, giroscópio segura o rumo.",
+        "Reconhece placas e obstáculos com um modelo de visão treinado em dataset próprio.",
         "Roda inteiro num Raspberry Pi 4, sem depender de um computador externo."
       ]
     },
@@ -45,9 +45,9 @@
       "title": "Wash Buddy",
       "period": "Fev 2026 - Jul 2026",
       "institution": "IADE - Creative University",
-      "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças, com expressões animadas, som e um cartão que reconhece quem está lavando.",
+      "description": "Um robô que transforma a hora de lavar as mãos numa brincadeira pra crianças: brinquedos com RFID — sabão, esponja, toalha — guiam o ciclo de lavagem passo a passo, com expressões animadas e som sincronizado, sem precisar de app.",
       "highlights": [
-        "Um cartão com RFID reconhece quem está lavando as mãos.",
+        "Brinquedos com RFID — sabão, esponja, toalha — avançam o ciclo de lavagem.",
         "O rosto animado no display muda de expressão conforme a etapa da lavagem.",
         "A placa própria desliga sozinha quando ociosa, sem gastar energia à toa."
       ]

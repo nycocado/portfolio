@@ -5,6 +5,20 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { ProjectImage } from "@/config/projects";
 
+const viewportCenter = (scroller: HTMLDivElement) =>
+  scroller.getBoundingClientRect().left + scroller.clientWidth / 2;
+
+const childCenter = (child: Element) => {
+  const rect = child.getBoundingClientRect();
+  return rect.left + rect.width / 2;
+};
+
+const snapLeftFor = (scroller: HTMLDivElement, child: Element) => {
+  const max = scroller.scrollWidth - scroller.clientWidth;
+  const delta = childCenter(child) - viewportCenter(scroller);
+  return Math.max(0, Math.min(max, scroller.scrollLeft + delta));
+};
+
 export function ProjectPhotoStack({
   images,
   alt,
@@ -13,19 +27,17 @@ export function ProjectPhotoStack({
   alt: string;
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const programmatic = useRef(false);
+  const releaseTimer = useRef<number | undefined>(undefined);
   const [current, setCurrent] = useState(0);
-
-  const viewportCenter = (scroller: HTMLDivElement) =>
-    scroller.getBoundingClientRect().left + scroller.clientWidth / 2;
-
-  const childCenter = (child: Element) => {
-    const rect = child.getBoundingClientRect();
-    return rect.left + rect.width / 2;
-  };
 
   const updateCurrent = useCallback(() => {
     const scroller = scrollerRef.current;
-    if (!scroller || images.length <= 1) return;
+    if (!scroller || programmatic.current || images.length <= 1) return;
+
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    if (scroller.scrollLeft <= 0) return setCurrent(0);
+    if (scroller.scrollLeft >= max - 1) return setCurrent(images.length - 1);
 
     const target = viewportCenter(scroller);
     let nearest = 0;
@@ -71,8 +83,13 @@ export function ProjectPhotoStack({
     const child = scroller?.children[clamped] as HTMLElement | undefined;
     if (!scroller || !child) return;
 
-    const delta = childCenter(child) - viewportCenter(scroller);
-    scroller.scrollTo({ left: scroller.scrollLeft + delta, behavior: "smooth" });
+    setCurrent(clamped);
+    programmatic.current = true;
+    clearTimeout(releaseTimer.current);
+    releaseTimer.current = window.setTimeout(() => {
+      programmatic.current = false;
+    }, 400);
+    scroller.scrollTo({ left: snapLeftFor(scroller, child), behavior: "smooth" });
   };
 
   return (
@@ -81,18 +98,42 @@ export function ProjectPhotoStack({
         ref={scrollerRef}
         className="relative no-scrollbar flex items-start gap-3 overflow-x-auto pb-2 -mx-8 px-8 md:mx-0 md:px-0 snap-x snap-mandatory"
       >
-        {images.map((image) => (
-          <Image
-            key={image.src}
-            src={image.src}
-            alt={alt}
-            width={image.width}
-            height={image.height}
-            unoptimized={image.src.endsWith(".gif")}
-            draggable={false}
-            className="h-40 md:h-64 w-auto shrink-0 rounded-lg select-none snap-center"
-          />
-        ))}
+        {images.map((image, i) => {
+          const className = `h-40 md:h-64 w-auto shrink-0 rounded-lg select-none snap-center cursor-pointer transition-all duration-300 ${
+            i === current ? "" : "grayscale brightness-[0.55]"
+          }`;
+
+          if (/\.(webm|mp4)$/.test(image.src)) {
+            return (
+              <video
+                key={image.src}
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                autoPlay
+                muted
+                loop
+                playsInline
+                onClick={() => goTo(i)}
+                className={className}
+              />
+            );
+          }
+
+          return (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={alt}
+              width={image.width}
+              height={image.height}
+              sizes="(min-width: 768px) 460px, 290px"
+              draggable={false}
+              onClick={() => goTo(i)}
+              className={className}
+            />
+          );
+        })}
       </div>
 
       {images.length > 1 && (
@@ -108,12 +149,15 @@ export function ProjectPhotoStack({
 
           <div className="flex items-center gap-1.5">
             {images.map((_, i) => (
-              <span
+              <button
                 key={i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Photo ${i + 1}`}
+                className={`h-1.5 rounded-full cursor-pointer transition-all duration-300 ${
                   i === current
                     ? "w-5 bg-gruvbox-yellow"
-                    : "w-1.5 bg-gruvbox-gray/30"
+                    : "w-1.5 bg-gruvbox-gray/30 hover:bg-gruvbox-gray/60"
                 }`}
               />
             ))}
