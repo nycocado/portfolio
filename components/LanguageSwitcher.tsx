@@ -15,7 +15,7 @@ export function LanguageSwitcher() {
       href={pathname}
       locale={nextLocale}
       className="flex items-center justify-center px-3 h-9 rounded-full border border-gruvbox-gray/50 text-gruvbox-gray hover:border-gruvbox-yellow hover:text-gruvbox-yellow transition-colors text-xs font-bold uppercase tracking-wide"
-      aria-label={t("label")}
+      aria-label={`${t("label")} — ${nextLocale}`}
     >
       {nextLocale}
     </Link>

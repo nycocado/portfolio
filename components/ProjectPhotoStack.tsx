@@ -154,12 +154,16 @@ export function ProjectPhotoStack({
                 type="button"
                 onClick={() => goTo(i)}
                 aria-label={`Photo ${i + 1}`}
-                className={`h-1.5 rounded-full cursor-pointer transition-all duration-300 ${
-                  i === current
-                    ? "w-5 bg-gruvbox-yellow"
-                    : "w-1.5 bg-gruvbox-gray/30 hover:bg-gruvbox-gray/60"
-                }`}
-              />
+                className="p-2.5 -m-2.5 cursor-pointer"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-5 bg-gruvbox-yellow"
+                      : "w-1.5 bg-gruvbox-gray/30 hover:bg-gruvbox-gray/60"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
