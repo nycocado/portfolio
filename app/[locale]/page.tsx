@@ -16,6 +16,7 @@ export default async function Home({
   setRequestLocale(locale);
   const t = await getTranslations("Hero");
   const name = t("name");
+  const alternateName = t("alternateName");
   const role = t("role");
   const tagline = t("tagline");
 
@@ -23,6 +24,7 @@ export default async function Home({
     "@context": "https://schema.org",
     "@type": "Person",
     name,
+    alternateName,
     jobTitle: role,
     url: `${SITE_URL}/${locale}`,
     sameAs: socialLinks
