@@ -10,6 +10,8 @@ export async function ScrollCue() {
       className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gruvbox-yellow hover:text-gruvbox-yellow-aa transition-colors"
     >
       <svg
+        width={64}
+        height={99}
         viewBox="0 0 62 96"
         className="w-16 h-auto"
         fill="none"

@@ -190,7 +190,7 @@ export function ProjectPhotoLightbox({
           onPointerMove={onThumbPointerMove}
           onPointerUp={onThumbPointerUp}
           onPointerLeave={onThumbPointerUp}
-          className="no-scrollbar flex justify-center gap-2 overflow-x-auto px-4 pb-4 cursor-grab active:cursor-grabbing select-none"
+          className="no-scrollbar flex justify-start gap-2 overflow-x-auto px-4 pb-4 cursor-grab active:cursor-grabbing select-none"
         >
           {images.map((img, i) => (
             <button
