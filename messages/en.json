@@ -81,5 +81,8 @@
   },
   "LanguageSwitcher": {
     "label": "Switch language"
+  },
+  "ScrollCue": {
+    "label": "Scroll to projects"
   }
 }

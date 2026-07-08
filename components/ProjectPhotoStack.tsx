@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { ProjectImage } from "@/config/projects";
+import { ProjectPhotoLightbox } from "@/components/ProjectPhotoLightbox";
 
 const viewportCenter = (scroller: HTMLDivElement) =>
   scroller.getBoundingClientRect().left + scroller.clientWidth / 2;
@@ -30,6 +31,7 @@ export function ProjectPhotoStack({
   const programmatic = useRef(false);
   const releaseTimer = useRef<number | undefined>(undefined);
   const [current, setCurrent] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const updateCurrent = useCallback(() => {
     const scroller = scrollerRef.current;
@@ -102,6 +104,8 @@ export function ProjectPhotoStack({
           const className = `h-40 md:h-64 w-auto shrink-0 rounded-lg select-none snap-center cursor-pointer transition-all duration-300 ${
             i === current ? "" : "grayscale brightness-[0.55]"
           }`;
+          const onClick = () =>
+            i === current ? setLightboxOpen(true) : goTo(i);
 
           if (/\.(webm|mp4)$/.test(image.src)) {
             return (
@@ -114,7 +118,7 @@ export function ProjectPhotoStack({
                 muted
                 loop
                 playsInline
-                onClick={() => goTo(i)}
+                onClick={onClick}
                 className={className}
               />
             );
@@ -129,7 +133,7 @@ export function ProjectPhotoStack({
               height={image.height}
               sizes="(min-width: 768px) 460px, 290px"
               draggable={false}
-              onClick={() => goTo(i)}
+              onClick={onClick}
               className={className}
             />
           );
@@ -176,6 +180,16 @@ export function ProjectPhotoStack({
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
+      )}
+
+      {lightboxOpen && (
+        <ProjectPhotoLightbox
+          images={images}
+          alt={alt}
+          index={current}
+          onIndexChange={goTo}
+          onClose={() => setLightboxOpen(false)}
+        />
       )}
     </div>
   );

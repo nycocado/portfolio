@@ -1,59 +1,82 @@
 # Design System — portfolio
 
-Identidade visual do portfólio — tema Gruvbox, tipografia dupla display/corpo, tema claro/escuro via CSS variables.
+Visual identity of the portfolio — Gruvbox theme, dual display/body typography, light/dark theme via CSS variables.
 
-> **Em desenvolvimento.** Cores e estilos serão revistos.
+> **Work in progress.** Colors and styles will be revisited.
 
-## Visão geral
+## Overview
 
-O design system é construído sobre **Tailwind CSS v4** com tokens Gruvbox expostos como CSS custom properties (`--background`, `--foreground`, `--gruvbox-yellow`, `--gruvbox-gray`, `--gruvbox-outline`), alternados por `next-themes` via a classe `.dark`. A tipografia usa **Space Grotesk** em títulos e **Manrope** no corpo. A cor de marca é o amarelo Gruvbox — `#fabd2f` no tema escuro, `#b57614` no claro.
+The design system is built on **Tailwind CSS v4** with Gruvbox tokens exposed as CSS custom properties (`--background`, `--foreground`, `--gruvbox-yellow`, `--gruvbox-yellow-aa`, `--gruvbox-gray`, `--gruvbox-outline`), switched by `next-themes` via the `.dark` class. Typography uses **Space Grotesk** for headings and **Manrope** for body text. The brand color is Gruvbox yellow — `#fabd2f` in dark theme, `#b57614` in light.
 
-## Tokens de cor (`globals.css`)
+## Color tokens (`globals.css`)
 
-Dois conjuntos de variáveis CSS — `:root` para tema claro, `.dark` para tema escuro:
+Two sets of CSS variables — `:root` for light theme, `.dark` for dark theme:
 
-| Token               | Claro (`#`) | Escuro (`#`) | Significado                             |
-| ------------------- | ----------- | ------------ | --------------------------------------- |
-| `--background`      | `#fbf1c7`   | `#282828`    | Fundo da página                         |
-| `--foreground`      | `#3c3836`   | `#ebdbb2`    | Texto principal                         |
-| `--gruvbox-yellow`  | `#b57614`   | `#fabd2f`    | Cor de marca — títulos, bordas, accent  |
-| `--gruvbox-gray`    | `#7c6f64`   | `#928374`    | Texto secundário — role, footer, labels |
-| `--gruvbox-outline` | `#a89984`   | `#665c54`    | Bordas e outlines                       |
+| Token                 | Light (`#`) | Dark (`#`) | Meaning                                 |
+| --------------------- | ----------- | ---------- | --------------------------------------- |
+| `--background`        | `#fbf1c7`   | `#282828`  | Page background                         |
+| `--foreground`        | `#3c3836`   | `#ebdbb2`  | Primary text                            |
+| `--gruvbox-yellow`    | `#b57614`   | `#fabd2f`  | Brand color — headings, borders, accent |
+| `--gruvbox-yellow-aa` | `#925f10`   | `#fabd2f`  | AA-contrast variant — text over yellow  |
+| `--gruvbox-gray`      | `#665c54`   | `#a89984`  | Secondary text — role, footer, labels   |
+| `--gruvbox-outline`   | `#a89984`   | `#665c54`  | Borders and outlines                    |
 
-Todos os tokens são expostos ao Tailwind via `@theme inline` como `color-*`, permitindo uso directo com `text-gruvbox-yellow`, `border-gruvbox-outline`, etc.
+All tokens are exposed to Tailwind via `@theme inline` as `color-*`, allowing direct use with `text-gruvbox-yellow`, `border-gruvbox-outline`, etc.
 
-## Tipografia
+## Typography
 
-Duas fontes carregadas via `next/font/google`, ambas com `display: swap`:
+Two fonts loaded via `next/font/google`, both with `display: swap`:
 
-| Variável CSS           | Fonte         | Alias Tailwind | Uso                              |
+| CSS variable           | Font          | Tailwind alias | Usage                            |
 | ---------------------- | ------------- | -------------- | -------------------------------- |
-| `--font-space-grotesk` | Space Grotesk | `font-display` | Títulos — nome, headings         |
-| `--font-manrope`       | Manrope       | `font-sans`    | Corpo — role, footer, botões, UI |
+| `--font-space-grotesk` | Space Grotesk | `font-display` | Headings — name, headings        |
+| `--font-manrope`       | Manrope       | `font-sans`    | Body — role, footer, buttons, UI |
 
-## Tema claro/escuro
+## Light/dark theme
 
-Gerido por `next-themes` com `attribute="class"` — a classe `.dark` é adicionada ao `<html>`. O padrão é `system` (segue a preferência do OS).
+Managed by `next-themes` with `attribute="class"` — the `.dark` class is added to `<html>`. Default is `system` (follows OS preference).
 
-A transição entre temas usa a **View Transitions API** (`document.startViewTransition`), com fade de 300ms (`cubic-bezier(0.4, 0, 0.2, 1)`). Navegadores sem suporte fazem a troca directamente (fallback no `ThemeToggle`).
+The transition between themes uses the **View Transitions API** (`document.startViewTransition`), with a 300ms fade (`cubic-bezier(0.4, 0, 0.2, 1)`). Browsers without support switch directly (fallback in `ThemeToggle`).
 
-## Animações
+## Animations
 
-| Nome           | Duração | Uso                                                                                                   |
-| -------------- | ------- | ----------------------------------------------------------------------------------------------------- |
-| `fade-in/out`  | `300ms` | View Transitions entre temas                                                                          |
-| fade-in (foto) | `0.6s`  | `AnimatedPhoto` — só na primeira montagem da sessão (`framer-motion`); não repete ao trocar de idioma |
+| Name            | Duration | Usage                                                                                                                                           |
+| --------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fade-in/out`   | `300ms`  | View Transitions between themes                                                                                                                 |
+| fade-in (photo) | `0.6s`   | `AnimatedPhoto` — CSS class + `useState`/`useEffect` (no animation library); only on the session's first mount, doesn't repeat on locale switch |
 
-## Layout da hero
+## Hero layout
 
-Split assimétrico: foto à esquerda, texto à direita alinhado à esquerda (`app/[locale]/page.tsx`). Empilha centralizado abaixo de `md:`. Ordem do texto: role (eyebrow uppercase pequeno) → nome → tagline → `SocialLinks`.
+Asymmetric split: photo on the left, text on the right left-aligned (`app/[locale]/page.tsx`). Stacks centered below `md:`. Text order: role (small uppercase eyebrow) → name → tagline → `SocialLinks`.
 
-## Recorte da foto — blob orgânico
+## Photo crop — organic blob
 
-Abordagem de design que estamos adotando: em vez de círculo/retângulo, a foto de perfil usa um `border-radius` assimétrico para um recorte orgânico, ecoando a silhueta do abacate da logo sem copiá-la (repetir letra por letra pareceu rígido demais nos protótipos).
+The hero profile photo uses an asymmetric `border-radius` for an organic crop, instead of circle/rectangle, echoing the avocado silhouette from the logo without copying it (repeating it letter-for-letter felt too rigid in prototypes).
 
 ```
 rounded-[45%_55%_58%_42%/55%_48%_52%_45%]
 ```
 
-Mesma borda `border-gruvbox-yellow` do círculo antigo. Tende a valer para próximos recortes de imagem no site (ex.: fotos de projetos), como alternativa ao círculo/retângulo padrão.
+Same `border-gruvbox-yellow` border as the old circle. **Not** adopted for other images on the site — project photos use a standard crop (see below), not the blob.
+
+## Project photo carousel
+
+`ProjectPhotoStack` — horizontal filmstrip with scroll-snap, `rounded-lg` corners (not the hero's organic blob). The active photo shows in full color; the rest get `grayscale` + `brightness-[0.55]`. Navigation via prev/next arrows and dots (one per photo); the active photo is detected by proximity to the scroller's center on the `scroll` event (`requestAnimationFrame`). Accepts photos and videos (`.webm`/`.mp4`, autoplay/muted/loop).
+
+## Scroll cue — regular oscillation (signature motif)
+
+`ScrollCue` (bottom of the hero section, links to `#projects`) is the second signature shape in the system, deliberately the opposite character from the blob: **regular**, not deformed. It's a single hand-authored SVG path — 5 evenly-spaced swings (built with consecutive `S` curve commands so each join is tangent-continuous, never a visible kink), settling into a straight vertical "leg," ending in a plain arrowhead:
+
+```
+M35 6 C 47 9.5, 47 16.5, 35 20 S 23 30.5, 35 34 S 47 44.5, 35 48 S 23 58.5, 35 62 S 35 72.5, 35 76 L 35 88
+```
+
+Key numbers: swings are 14 units apart (half the 28-unit wave period), amplitude ±12 from the center line, `stroke-width` 4, rendered at `w-16` (64px). The last swing's own end-control point sits directly above its endpoint (same x), which is what makes the curve arrive already vertical — the straight leg is a continuation, not a separate patched-on piece.
+
+This shape went through many animation experiments (a traveling sine wave, a "worm" crawling dash, per-swing pulsing) — all were tried and rejected as either too subtle, too distorted, or not matching the intended motion. Current state: **fully static**, no animation. If motion is revisited, any approach must leave this exact `d` string undistorted at rest and never move the leg/arrowhead.
+
+## List marker — organic blob, randomized (`BlobMarker`)
+
+Project highlight bullets (in `ProjectsSection`) use `BlobMarker` instead of a plain dot: a small (14px) **outlined** shape (2px `border-gruvbox-yellow`, transparent fill) with a random asymmetric `border-radius` — same technique as the hero photo crop, not hand-picked this time but generated per mount, each corner independently randomized in the 38-62% range (tighter than the wide 15-85% tried and rejected during design — that read as too spiky/erratic; this range stays visibly lopsided without looking broken).
+
+To avoid an SSR/hydration mismatch, the component renders a plain `50%` circle on the server and swaps to the randomized shape client-side via `useLayoutEffect` (before paint, so there's no visible flash). Every page load — and every remount, e.g. switching project tabs — gets fresh random shapes per bullet.

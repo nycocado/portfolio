@@ -6,6 +6,7 @@ CLAUDE.md
 ds-bundle/
 .claude/
 .superpowers/
+.codegraph/
 
 # DEPENDENCIES
 /node_modules

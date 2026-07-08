@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { projects } from "@/config/projects";
 import { ProjectPhotoStack } from "@/components/ProjectPhotoStack";
+import { BlobMarker } from "@/components/BlobMarker";
 
 export function ProjectsSection() {
   const t = useTranslations("Projects");
@@ -66,7 +67,7 @@ export function ProjectsSection() {
                   key={highlight}
                   className="flex gap-2 text-sm text-gruvbox-gray/90"
                 >
-                  <span className="text-gruvbox-yellow">·</span>
+                  <BlobMarker />
                   {highlight}
                 </li>
               ))}
