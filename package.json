@@ -29,5 +29,10 @@
     "prettier": "^3.9.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "@swc/core",
+    "unrs-resolver"
+  ]
 }
