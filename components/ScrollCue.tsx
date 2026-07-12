@@ -13,7 +13,7 @@ export async function ScrollCue() {
         width={64}
         height={99}
         viewBox="0 0 62 96"
-        className="w-16 h-auto"
+        className="w-12 md:w-16 h-auto"
         fill="none"
         aria-hidden="true"
       >

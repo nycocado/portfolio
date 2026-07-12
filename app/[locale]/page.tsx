@@ -44,7 +44,7 @@ export default async function Home({
       />
       <Navbar />
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center p-8 overflow-hidden">
+      <section className="relative min-h-dvh flex flex-col items-center justify-center p-8 overflow-hidden">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 z-10 w-full max-w-4xl">
           <div className="relative w-[13rem] h-[15rem] md:w-[19rem] md:h-[21.5rem] shrink-0 group">
             <div className="absolute inset-0 rounded-[45%_55%_58%_42%/55%_48%_52%_45%] border-4 border-gruvbox-yellow shadow-2xl animate-pulse opacity-20 group-hover:opacity-40 transition-opacity" />
