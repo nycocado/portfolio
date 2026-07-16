@@ -6,7 +6,7 @@
   "entry": "./dist/index.js",
   "srcDir": "components",
   "cssEntry": "./.design-sync/.cache/chunks/compiled.css",
-  "buildCmd": "bun run build && mkdir -p .design-sync/.cache/chunks .design-sync/.cache/media && cp $(ls -S .next/static/chunks/*.css | head -1) .design-sync/.cache/chunks/compiled.css && cp .next/static/media/* .design-sync/.cache/media/",
+  "buildCmd": "bun run build && mkdir -p .design-sync/.cache/chunks .design-sync/.cache/media && cp $(ls -S .next/static/chunks/*.css | head -1) .design-sync/.cache/chunks/compiled.css && cp .next/static/media/* .design-sync/.cache/media/ && printf '\\n:root{--font-space-grotesk:\"Space Grotesk\",\"Space Grotesk Fallback\";--font-manrope:\"Manrope\",\"Manrope Fallback\"}\\n' >> .design-sync/.cache/chunks/compiled.css",
   "extraEntries": ["./.design-sync/process-shim.mjs", "./.design-sync/messages-ref.mjs", "next-intl", "next-themes"],
   "tsconfig": "./tsconfig.json",
   "provider": {

@@ -26,6 +26,92 @@ If a future Next/next-intl version exposes a way to run these standalone
 (e.g. a testing harness for RSC), revisit — until then these six stay on the
 floor card indefinitely, not "to author later."
 
+## Known server-side self-check warns (claude.ai/design adherence config)
+
+The app's server-side self-check (base SKILL.md §6, "regenerates the
+adherence config … from the uploaded source") flags two things in
+`styles.css`/`_ds_bundle.css` — both are **expected, non-actionable noise**
+from shipping the full compiled Next.js production CSS as `cfg.cssEntry`,
+not bugs in this repo's Tailwind/Next.js source. Don't "fix" them; a re-sync
+will keep reproducing them for as long as `cssEntry` points at the compiled
+chunk (see "CSS: compiled, not source" above).
+
+- **Custom properties scoped to generated class selectors** (e.g.
+  `.space_grotesk_e6988195-module__RNs2Mq__variable`,
+  `.manrope_9b24f49e-module__hJlnFq__variable`,
+  `:where(.space-y-2>:not(:last-child))`) — the font ones are `next/font`'s
+  own mechanism: `Space_Grotesk({variable: "--font-space-grotesk"})` in
+  `app/layout.tsx` generates a hashed CSS-module class applied to `<body>`
+  (`spaceGrotesk.variable`), which is how `next/font` injects its variable at
+  all — moving it to `:root` means dropping `next/font` (loses
+  self-hosting/preload/optimization) for a cosmetic classification win. The
+  `:where(.space-y-2…)` one is Tailwind v4's own zero-specificity
+  implementation of the `space-y-*` utility — always element-scoped by
+  design, never a theme token. This repo's REAL theme tokens (Gruvbox
+  palette) already live correctly in `:root`/`.dark` in `app/globals.css`.
+- **Unclassifiable custom properties** (`--tw-translate-x/y/z`,
+  `--tw-scale-x/y/z`, `--tw-border-style`, `--tw-scroll-snap-strictness`,
+  `--ease-out`, `--animate-pulse`, …) — Tailwind v4's internal
+  implementation variables for composing transforms/utilities per element
+  (e.g. `transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+  scale(var(--tw-scale-x), var(--tw-scale-y))`). Correctly `@kind other`;
+  giving them a global value in `:root` would break every element using
+  those utilities (all elements would share one translate/scale). Hand-
+  annotating the compiled CSS with `/* @kind */` comments wouldn't survive
+  anyway — `styles.css`/`_ds_bundle.css`/the cached `compiled.css` are all
+  regenerated from scratch by `cfg.buildCmd` + the converter on every sync.
+
+Decision (2026-07-16, user confirmed): leave the app's Tailwind/next-font
+source untouched — the classification warning itself is cosmetic. But see
+the next section: the SAME root cause (the font variable's scoped-class
+selector) turned out to also cause a REAL render bug in previews, which
+IS fixed, on the design-sync side only.
+
+## Fonts render as fallback in previews — real bug, fixed via `buildCmd` (2026-07-16)
+
+Found while investigating a report that previews "don't match the real
+site" for fonts: `document.fonts` in a rendered preview lists every
+`@font-face` (`Space Grotesk`, `Manrope`, both `Fallback` variants) as
+`unloaded`, and every element's computed `font-family` falls through to the
+generic `ui-sans-serif, system-ui, sans-serif…` stack — never "Space
+Grotesk"/"Manrope" (verified via a headless Playwright check against
+`ds-bundle/components/general/BlobMarker/BlobMarker.html`, `document.fonts`
++ computed style).
+
+Root cause: `next/font`'s `variable` option (`app/layout.tsx`) only *defines*
+`--font-space-grotesk`/`--font-manrope` inside a hashed CSS-module class
+(`.space_grotesk_e6988195-module__RNs2Mq__variable` etc. — the same
+selectors flagged in the section above); that class is applied to `<body>`
+in the real app's root layout (`spaceGrotesk.variable` on
+`app/layout.tsx`'s `<body className=…>`) but the design-sync preview
+harness renders each component in isolation, with no root layout and so
+never applies that class anywhere — the two custom properties are simply
+undefined in every preview's DOM, `var(--font-space-grotesk)` (consumed by
+Tailwind's `font-display`/`font-sans` via `app/globals.css`'s `@theme
+inline`) resolves to nothing, and every themed text element silently falls
+back to the browser default sans.
+
+Fix (design-sync side only, app source untouched): `cfg.buildCmd` now
+appends a `:root` rule redeclaring the same two variables with the same
+font-family values `next/font` already established, straight onto the
+cached compiled CSS after every build:
+
+```
+:root{--font-space-grotesk:"Space Grotesk","Space Grotesk Fallback";--font-manrope:"Manrope","Manrope Fallback"}
+```
+
+This doesn't reimplement or fork anything — it's the exact same
+family-name mapping `next/font` already generates, just also declared at a
+scope every isolated preview can see. Re-verified after rebuild: computed
+`font-family` on preview text now resolves to `Manrope`/`Space Grotesk`
+correctly.
+
+**Re-sync risk**: if `next/font`'s generated fallback names ever change
+(e.g. a `next` upgrade changes the `-s-*` hash or the `Fallback` metrics
+tuning), this hardcoded snippet would silently keep the OLD names instead
+of erroring — re-check `grep -o '"Space Grotesk"[^}]*' .next/static/chunks/*.css`
+against this snippet on any `next`/`next/font` version bump.
+
 ## Known render warns
 
 - `MobileMenu` — the real component root is `className="md:hidden"` (Tailwind
