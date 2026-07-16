@@ -42,15 +42,28 @@ Never introduce a new color outside this table — the whole site is built on th
 
 Read `styles.css` (imports `_ds_bundle.css`, which carries every token and utility class above) and each component's own `.prompt.md` before styling anything. The `.d.ts` next to each component is its real prop contract — some components (`Navbar`, `ScrollCue`, `SocialLinks`) are async and floor-carded here (see their `.prompt.md`) but are real, working exports; compose around them using their documented props rather than guessing.
 
+### Page composition — how the real homepage is assembled
+
+The live site is one page (`app/[locale]/page.tsx`), top to bottom:
+
+1. `<Navbar />` — `fixed top-0 inset-x-0`, `max-w-4xl mx-auto`, logo left, controls right. Floats over everything else.
+2. **Hero** — `<section className="relative min-h-dvh flex flex-col items-center justify-center p-8 overflow-hidden">`, inner row `flex flex-col md:flex-row items-center gap-10 md:gap-14 max-w-4xl` mixes:
+   - the blob-cropped photo (fixed box `w-[13rem] h-[15rem] md:w-[19rem] md:h-[21.5rem]`)
+   - a text column (`items-center md:items-start text-center md:text-left gap-4`): small uppercase eyebrow (role) → huge `font-display` name → `font-sans text-lg md:text-2xl` tagline → `<SocialLinks />`
+   - `<ScrollCue />` pinned `absolute bottom-8 left-1/2 -translate-x-1/2` inside the hero section
+3. `<ProjectsSection />` — `min-h-screen max-w-4xl mx-auto pt-24 pb-24 px-8`: `font-display` heading, then `flex flex-col md:flex-row gap-10` of a left tab-nav + a right article (photo stack, title, meta, description, `BlobMarker` highlight list, tags, GitHub link).
+
+**The rhythm to copy for a new section or page**: `max-w-4xl mx-auto px-8`, generous vertical padding (`pt-24 pb-24` for a full section), a `font-display` heading in `text-gruvbox-yellow`, body copy in `font-sans text-gruvbox-gray/90`, stack `flex-col` on mobile → `md:flex-row` for any side-by-side layout. Never go past `max-w-4xl` — this site's structure is deliberately narrow and centered, not a wide multi-column app: a new page should feel like another section of the same single column, not a different information density.
+
 ### Example composition
 
 ```jsx
-<section className="bg-background text-foreground font-sans px-8 py-12">
-  <h2 className="font-display text-3xl font-bold text-gruvbox-yellow mb-6">
-    Projects
+<section className="max-w-4xl mx-auto px-8 pt-24 pb-24">
+  <h2 className="font-display text-3xl md:text-4xl font-bold text-gruvbox-yellow mb-6">
+    Section heading
   </h2>
-  <p className="text-gruvbox-gray/90 max-w-xl">
-    A short description in body copy, using the secondary text color.
+  <p className="font-sans text-gruvbox-gray/90 max-w-xl">
+    Body copy, in the secondary text color.
   </p>
   <span className="mt-4 inline-block text-xs px-2.5 py-1 rounded-full border border-gruvbox-outline text-gruvbox-gray">
     Tag
