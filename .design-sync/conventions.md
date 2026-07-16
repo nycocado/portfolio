@@ -38,6 +38,19 @@ Never introduce a new color outside this table — the whole site is built on th
 - **Organic blob crop**: `rounded-[45%_55%_58%_42%/55%_48%_52%_45%]` — the hero photo's asymmetric border-radius. Pair with a `border-gruvbox-yellow` border. Don't apply to other imagery (project photos use a plain `rounded-lg`).
 - **Randomized blob marker** (`BlobMarker`): small outlined bullet with a per-mount randomized asymmetric radius, corners in the 38–62% range. Use as a list-item marker, never as a decorative one-off.
 
+### Brand assets
+
+Static files, not components — reference the real files at `brand/` in this project (not a redraw):
+
+| File | Size | Use |
+|---|---|---|
+| `brand/logo-light.svg` | 40×54 viewBox, avocado silhouette | Light theme — shown via `dark:hidden` |
+| `brand/logo-dark.svg` | 40×54 viewBox, same mark, yellow gradient | Dark theme — shown via `hidden dark:block` |
+| `brand/og-light.png` | 924×540 | Social-share preview (Open Graph / Twitter card) |
+| `brand/web-app-manifest-192x192.png`, `brand/web-app-manifest-512x512.png` | 192×192, 512×512 | App/home-screen icon (PWA manifest) |
+
+Always ship both logo SVGs together, toggled by the same `dark:` pattern `Navbar` uses — never just one. The mark is intentionally small and simple; don't redraw it larger or add detail.
+
 ### Where the truth lives
 
 Read `styles.css` (imports `_ds_bundle.css`, which carries every token and utility class above) and each component's own `.prompt.md` before styling anything. The `.d.ts` next to each component is its real prop contract — some components (`Navbar`, `ScrollCue`, `SocialLinks`) are async and floor-carded here (see their `.prompt.md`) but are real, working exports; compose around them using their documented props rather than guessing.

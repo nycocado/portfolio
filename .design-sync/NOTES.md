@@ -91,7 +91,7 @@ chunk", which has held so far but isn't a guarantee — if it ever grabs the
 wrong chunk, `[CSS_IMPORT_MISSING]`/missing Gruvbox tokens in validate's
 output is the tell).
 
-## Project media asset copy (manual — not automated by any cfg key)
+## Project media + brand asset copy (manual — not automated by any cfg key)
 
 `ProjectsSection`'s default state selects the first project (`capo`), whose
 media are `.webm` videos referenced by **absolute path**
@@ -109,6 +109,21 @@ non-standard `projects/` path; if the DS pane shows a blank video for
 ProjectsSection, this assumption was wrong and the fix is either dropping the
 plan to serve project media this way, or authoring ProjectsSection's preview
 around a project with static images instead of the video-only `capo`.
+
+**Brand assets** (logo, OG image, manifest icons) get the same treatment —
+none of them are rendered by any synced component (`Navbar`, which shows the
+logo, is itself floor-carded), so without a manual copy the design agent has
+no visibility into them at all. Copied once into `ds-bundle/brand/`:
+
+```sh
+cp public/logo-light.svg public/logo-dark.svg public/og-light.png \
+   public/web-app-manifest-192x192.png public/web-app-manifest-512x512.png \
+   ds-bundle/brand/
+```
+
+Same rule as `projects/`: redo this after every rebuild (wiped along with
+everything else in `--out`), before upload. Documented for the design agent
+in `conventions.md`'s "Brand assets" section.
 
 ## Re-sync risks
 
