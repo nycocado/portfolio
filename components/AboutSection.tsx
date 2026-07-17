@@ -55,7 +55,7 @@ export function AboutSection() {
             fill
             sizes="(min-width: 768px) 14rem, 100vw"
             draggable={false}
-            className="object-cover"
+            className="object-cover select-none"
             style={{ objectPosition: photos[mode].objectPosition }}
           />
         </div>
