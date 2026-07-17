@@ -14,12 +14,6 @@ const childCenter = (child: Element) => {
   return rect.left + rect.width / 2;
 };
 
-const snapLeftFor = (scroller: HTMLDivElement, child: Element) => {
-  const max = scroller.scrollWidth - scroller.clientWidth;
-  const delta = childCenter(child) - viewportCenter(scroller);
-  return Math.max(0, Math.min(max, scroller.scrollLeft + delta));
-};
-
 export function ProjectPhotoStack({
   images,
   alt,
@@ -100,7 +94,7 @@ export function ProjectPhotoStack({
 
     setCurrent(clamped);
     programmatic.current = true;
-    scroller.scrollTo({ left: snapLeftFor(scroller, child), behavior: "smooth" });
+    child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   };
 
   return (
