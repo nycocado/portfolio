@@ -133,7 +133,7 @@ export function ProjectPhotoStack({
             <Image
               key={image.src}
               src={image.src}
-              alt={alt}
+              alt={`${alt} — ${i + 1}/${images.length}`}
               width={image.width}
               height={image.height}
               sizes="(min-width: 768px) 460px, 290px"

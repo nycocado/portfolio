@@ -66,6 +66,7 @@ export function ProjectPhotoLightbox({
 
   const image = images[index];
   const isVideo = isVideoSrc(image.src);
+  const photoLabel = `${alt} — ${index + 1}/${images.length}`;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -122,7 +123,7 @@ export function ProjectPhotoLightbox({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={alt}
+      aria-label={photoLabel}
       onClick={onClose}
       className="fixed inset-0 z-50 flex flex-col bg-black/90"
     >
@@ -162,7 +163,7 @@ export function ProjectPhotoLightbox({
           <Image
             key={image.src}
             src={image.src}
-            alt={alt}
+            alt={photoLabel}
             width={image.width}
             height={image.height}
             draggable={false}

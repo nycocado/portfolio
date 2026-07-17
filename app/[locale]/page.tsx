@@ -5,6 +5,7 @@ import { SocialLinks } from "@/components/SocialLinks";
 import { HeroPhoto } from "@/components/HeroPhoto";
 import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
+import { Footer } from "@/components/Footer";
 import { ScrollCue } from "@/components/ScrollCue";
 import { socialLinks } from "@/config/portfolio";
 import { SITE_URL } from "@/lib/site";
@@ -102,6 +103,8 @@ export default async function Home({
       <AboutSection lastFm={lastFm} />
 
       <ProjectsSection />
+
+      <Footer />
     </main>
   );
 }

@@ -16,6 +16,7 @@
     "email": "Email contact"
   },
   "Navbar": {
+    "home": "Home",
     "about": "About",
     "projects": "Projects"
   },

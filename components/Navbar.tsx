@@ -8,6 +8,7 @@ import { NavbarScrollWrapper } from "@/components/NavbarScrollWrapper";
 export async function Navbar() {
   const t = await getTranslations("Navbar");
   const links = [
+    { href: "#top", label: t("home") },
     { href: "#about", label: t("about") },
     { href: "#projects", label: t("projects") },
   ];
@@ -15,10 +16,10 @@ export async function Navbar() {
   return (
     <NavbarScrollWrapper>
       <div className="flex items-center justify-between px-8 py-6 max-w-4xl mx-auto">
-        <a href="#top" aria-label="nycocado">
+        <div aria-hidden="true">
           <Image
             src="/logo-light.svg"
-            alt="nycocado"
+            alt=""
             width={40}
             height={54}
             draggable={false}
@@ -27,14 +28,14 @@ export async function Navbar() {
           />
           <Image
             src="/logo-dark.svg"
-            alt="nycocado"
+            alt=""
             width={40}
             height={54}
             draggable={false}
             priority
             className="h-10 w-auto hidden dark:block"
           />
-        </a>
+        </div>
         <div className="flex items-center gap-6">
           {links.map((link) => (
             <a
