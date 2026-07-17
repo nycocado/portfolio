@@ -49,6 +49,16 @@ The transition between themes uses the **View Transitions API** (`document.start
 
 Asymmetric split: photo on the left, text on the right left-aligned (`app/[locale]/page.tsx`). Stacks centered below `md:`. Text order: role (small uppercase eyebrow) → name → tagline → `SocialLinks`.
 
+Content staggers in on load (`hp-in`): each element fades up 14px, delayed `(--hp-i - 1) * 0.1s` from its index, so photo → role → name → underline → tagline → `SocialLinks` arrive in sequence rather than all at once. `ProjectsSection`'s heading/nav/article get the same idea in reverse — `hp-reveal`, triggered per-element via `IntersectionObserver` (15% visible) instead of on load, staggered `0.12s` apart.
+
+## Hero photo — 3D tilt
+
+`HeroPhoto` tracks the cursor within its bounds and rotates the photo in 3D (`perspective: 700px`, up to ±8° on both axes via `rotateY`/`rotateX`, computed from cursor position relative to center), resetting to flat on mouse leave. Paired with the blob's own hover state (shadow spreads further, see above) — the two respond to the same hover independently.
+
+## Navbar — glass on scroll
+
+`NavbarScrollWrapper` toggles a class once the page scrolls past 40px: transparent border and background become a translucent `color-mix` background + `backdrop-filter: blur(12px)` + visible bottom border (`hp-nav-scrolled`). Reads solid over the hero at the top, then becomes a glass bar once content scrolls underneath it.
+
 ## Photo crop — organic blob
 
 The hero profile photo uses an asymmetric `border-radius` for an organic crop, instead of circle/rectangle, echoing the avocado silhouette from the logo without copying it (repeating it letter-for-letter felt too rigid in prototypes).
@@ -63,6 +73,8 @@ Same `border-gruvbox-yellow` border as the old circle. **Not** adopted for other
 
 `ProjectPhotoStack` — horizontal filmstrip with scroll-snap, `rounded-lg` corners (not the hero's organic blob). The active photo shows in full color; the rest get `grayscale` + `brightness-[0.55]`. Navigation via prev/next arrows and dots (one per photo); the active photo is detected by proximity to the scroller's center on the `scroll` event (`requestAnimationFrame`). Accepts photos and videos (`.webm`/`.mp4`, autoplay/muted/loop).
 
+Clicking the active photo opens `ProjectPhotoLightbox`, a full-screen view (`bg-black/90` backdrop) with the same prev/next controls, a thumbnail strip, and swipe/arrow-key navigation. Closes via the X button, `Escape`, or clicking the backdrop outside the media itself.
+
 ## Scroll cue — regular oscillation (signature motif)
 
 `ScrollCue` (bottom of the hero section, links to `#projects`) is the second signature shape in the system, deliberately the opposite character from the blob: **regular**, not deformed. It's a single hand-authored SVG path — 5 evenly-spaced swings (built with consecutive `S` curve commands so each join is tangent-continuous, never a visible kink), settling into a straight vertical "leg," ending in a plain arrowhead:
@@ -75,8 +87,14 @@ Key numbers: swings are 14 units apart (half the 28-unit wave period), amplitude
 
 This shape went through many animation experiments (a traveling sine wave, a "worm" crawling dash, per-swing pulsing) — all were tried and rejected as either too subtle, too distorted, or not matching the intended motion. Current state: **fully static**, no animation. If motion is revisited, any approach must leave this exact `d` string undistorted at rest and never move the leg/arrowhead.
 
+Hidden below `md:` — on some mobile browsers the fixed bottom position read as visually broken, so the cue only shows on larger viewports.
+
 ## List marker — organic blob, randomized (`BlobMarker`)
 
 Project highlight bullets (in `ProjectsSection`) use `BlobMarker` instead of a plain dot: a small (14px) **outlined** shape (2px `border-gruvbox-yellow`, transparent fill) with a random asymmetric `border-radius` — same technique as the hero photo crop, not hand-picked this time but generated per mount, each corner independently randomized in the 38-62% range (tighter than the wide 15-85% tried and rejected during design — that read as too spiky/erratic; this range stays visibly lopsided without looking broken).
 
 To avoid an SSR/hydration mismatch, the component renders a plain `50%` circle on the server and swaps to the randomized shape client-side via `useLayoutEffect` (before paint, so there's no visible flash). Every page load — and every remount, e.g. switching project tabs — gets fresh random shapes per bullet.
+
+## Tooltip — hand-drawn bubble (`hp-tip`)
+
+`SocialLinks` icons carry a `data-tip` attribute rendered via `.hp-tip::after` — a small yellow speech-bubble bearing the icon's label, asymmetric corner radii and a slight `-2deg` rotation for a hand-drawn feel, shown on hover/focus above the icon. `font-display` (Space Grotesk), not the body font — matches headings, not UI text.

@@ -6,13 +6,6 @@ CLAUDE.md
 .superpowers/
 .codegraph/
 
-# DESIGN-SYNC
-.ds-sync/
-ds-bundle/
-.design-sync/.cache/
-.design-sync/learnings/
-.design-sync/node_modules
-
 # DEPENDENCIES
 /node_modules
 
