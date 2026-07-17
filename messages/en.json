@@ -66,6 +66,10 @@
         "reading": "Reading",
         "emulators": "Emulators",
         "games": "Singleplayer games"
+      },
+      "lastfm": {
+        "artists": "Top Artists This Week",
+        "tracks": "Top Tracks This Week"
       }
     }
   },

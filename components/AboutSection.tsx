@@ -3,14 +3,17 @@
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { recruiterFacts, personalFacts, timelineIds, photos } from "@/config/about";
+import { recruiterFacts, personalFacts, timelineIds, photos, analogPhotos } from "@/config/about";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useRevealOnScroll } from "@/lib/useRevealOnScroll";
 import { richText } from "@/lib/richText";
+import { FilmStrip } from "@/components/FilmStrip";
+import { LastFmWidget } from "@/components/LastFmWidget";
+import type { LastFmData } from "@/lib/lastfm";
 
 type Mode = "recruiter" | "personal";
 
-export function AboutSection() {
+export function AboutSection({ lastFm }: { lastFm: LastFmData | null }) {
   const t = useTranslations("About");
   const [mode, setMode] = useState<Mode>("recruiter");
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,7 +26,7 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="min-h-screen flex flex-col w-full max-w-4xl mx-auto scroll-mt-6 pt-24 pb-24 px-8"
+      className="flex flex-col w-full max-w-4xl mx-auto scroll-mt-6 pt-24 pb-24 px-8"
     >
       <div className="flex items-center justify-between flex-wrap gap-4 mb-12">
         <SectionHeading>{t("heading")}</SectionHeading>
@@ -113,6 +116,19 @@ export function AboutSection() {
           )}
         </div>
       </article>
+
+      {mode === "personal" && (
+        <div className="mt-10 flex flex-col gap-10">
+          <FilmStrip images={analogPhotos} alt={t("heading")} />
+          {lastFm && (
+            <LastFmWidget
+              data={lastFm}
+              artistsLabel={t("personal.lastfm.artists")}
+              tracksLabel={t("personal.lastfm.tracks")}
+            />
+          )}
+        </div>
+      )}
     </section>
   );
 }

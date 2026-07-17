@@ -66,6 +66,10 @@
         "reading": "Leitura",
         "emulators": "Emuladores",
         "games": "Jogos singleplayer"
+      },
+      "lastfm": {
+        "artists": "Mais Ouvidos da Semana",
+        "tracks": "Faixas Mais Tocadas da Semana"
       }
     }
   },

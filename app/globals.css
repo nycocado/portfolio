@@ -92,6 +92,29 @@ body {
   display: none;
 }
 
+/* Sprocket-hole pattern for the analog photo filmstrip (FilmStrip.tsx). */
+.filmstrip-sprockets {
+  background-image: radial-gradient(circle, var(--background) 2.5px, transparent 3px);
+  background-size: 18px 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* Infinite auto-scroll for the analog photo filmstrip — the track renders
+   its frames twice so translating exactly -50% loops seamlessly. */
+@keyframes filmstrip-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-filmstrip-scroll {
+  animation: filmstrip-scroll 40s linear infinite;
+}
+
 ::selection {
   background: var(--gruvbox-yellow);
   color: var(--background);
@@ -286,7 +309,8 @@ button:focus-visible {
   .hero-blob-shadow,
   .hp-underline,
   .hp-arrow-path,
-  .hp-cue-bounce {
+  .hp-cue-bounce,
+  .animate-filmstrip-scroll {
     animation: none;
   }
   .hp-in {

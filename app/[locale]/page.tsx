@@ -9,6 +9,7 @@ import { ScrollCue } from "@/components/ScrollCue";
 import { socialLinks } from "@/config/portfolio";
 import { SITE_URL } from "@/lib/site";
 import { richText } from "@/lib/richText";
+import { getLastFmWeeklyTop } from "@/lib/lastfm";
 import profilePic from "@/public/photo.webp";
 
 export default async function Home({
@@ -22,6 +23,7 @@ export default async function Home({
   const name = t("name");
   const alternateName = t("alternateName");
   const role = t("role");
+  const lastFm = await getLastFmWeeklyTop();
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -97,7 +99,7 @@ export default async function Home({
         <ScrollCue />
       </section>
 
-      <AboutSection />
+      <AboutSection lastFm={lastFm} />
 
       <ProjectsSection />
     </main>
