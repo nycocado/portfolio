@@ -45,7 +45,7 @@ export default async function Home({
       />
       <Navbar />
 
-      <section className="relative min-h-dvh flex flex-col items-center justify-center p-8 overflow-hidden">
+      <section className="relative min-h-svh flex flex-col items-center justify-center p-8 overflow-hidden">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 z-10 w-full max-w-4xl">
           <div className="hp-in" style={{ "--hp-i": 1 } as CSSProperties}>
             <HeroPhoto src={profilePic} alt={name} />
