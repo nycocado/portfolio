@@ -141,7 +141,6 @@ export function ProjectPhotoLightbox({
 
       <div
         className="relative flex-1 flex items-center justify-center px-4 py-8 overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -156,6 +155,7 @@ export function ProjectPhotoLightbox({
             muted
             loop
             playsInline
+            onClick={(e) => e.stopPropagation()}
             className="max-h-[70vh] max-w-[92vw] w-auto h-auto object-contain select-none"
           />
         ) : (
@@ -166,6 +166,7 @@ export function ProjectPhotoLightbox({
             width={image.width}
             height={image.height}
             draggable={false}
+            onClick={(e) => e.stopPropagation()}
             className="max-h-[70vh] max-w-[92vw] w-auto h-auto object-contain select-none"
           />
         )}
