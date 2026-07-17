@@ -39,7 +39,7 @@ export function AboutSection({ lastFm }: { lastFm: LastFmData | null }) {
               onClick={() => setMode(m)}
               className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide transition-colors cursor-pointer ${
                 mode === m
-                  ? "bg-gruvbox-yellow text-background"
+                  ? "bg-gruvbox-yellow-aa text-background"
                   : "text-gruvbox-gray hover:text-gruvbox-yellow"
               }`}
             >
@@ -54,7 +54,7 @@ export function AboutSection({ lastFm }: { lastFm: LastFmData | null }) {
           <Image
             key={mode}
             src={photos[mode].src}
-            alt={t("heading")}
+            alt={t(`${mode}.photoAlt`)}
             fill
             sizes="(min-width: 768px) 14rem, 100vw"
             draggable={false}
@@ -119,7 +119,7 @@ export function AboutSection({ lastFm }: { lastFm: LastFmData | null }) {
 
       {mode === "personal" && (
         <div className="mt-10 flex flex-col gap-10">
-          <FilmStrip images={analogPhotos} alt={t("heading")} />
+          <FilmStrip images={analogPhotos} alt={t("personal.filmstripAlt")} />
           {lastFm && (
             <LastFmWidget
               data={lastFm}

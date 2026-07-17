@@ -26,6 +26,7 @@
       "personal": "Personal"
     },
     "recruiter": {
+      "photoAlt": "Nycolas Souza, professional photo",
       "bio": [
         "Backend Software Engineer, recently graduated in Computer Engineering from IADE — Universidade Europeia, <b>top of my class</b>. I build systems meant to grow with the business, with a focus on maintainability and clear architecture. My background spans the full development lifecycle: from building user interfaces to designing the APIs and integrations that serve them well. Currently deepening my Java and Spring Boot practice, with a strong interest in distributed systems, process automation, and cloud infrastructure."
       ],
@@ -55,6 +56,7 @@
       }
     },
     "personal": {
+      "photoAlt": "Nycolas Souza, personal photo",
       "bio": [
         "It all started with my uncle Naor, who introduced me to computers, video games, and emulators. That's where the curiosity for understanding how things work under the hood came from.",
         "Getting here wasn't a straight line, though. I grew up in an isolated part of Santo André, Brazil, going to one of the weakest schools in the city. Some subjects went years without a teacher, and math was the biggest gap it left me with. I only really confronted that when I started 12th grade in Portugal, in the Sciences track, and had to cram years of missing math and physics just to pass the entrance exam, with a lot of help from a private tutor, Professor Ivo. That same drive carried into university, where I went <b>from struggling to top of my class</b>, best math grades included.",
@@ -67,6 +69,7 @@
         "emulators": "Emulators",
         "games": "Singleplayer games"
       },
+      "filmstripAlt": "Analog photo",
       "lastfm": {
         "artists": "Top Artists This Week",
         "tracks": "Top Tracks This Week"

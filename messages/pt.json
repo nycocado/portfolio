@@ -26,6 +26,7 @@
       "personal": "Pessoal"
     },
     "recruiter": {
+      "photoAlt": "Nycolas Souza, foto profissional",
       "bio": [
         "Engenheiro de Software back-end, recém-formado em Engenharia Informática pelo IADE — Universidade Europeia, com <b>a nota mais alta da turma</b>. Construo sistemas pensados para crescer com o negócio, com foco em manutenibilidade e clareza de arquitetura. A minha experiência cobre todo o ciclo de desenvolvimento: desde a construção de interfaces até ao desenho de APIs e integrações que as servem bem. Atualmente a aprofundar a prática em Java e Spring Boot, com forte interesse em sistemas distribuídos, automação de processos e infraestrutura cloud."
       ],
@@ -55,6 +56,7 @@
       }
     },
     "personal": {
+      "photoAlt": "Nycolas Souza, foto pessoal",
       "bio": [
         "Tudo começou com o meu tio Naor, que me apresentou aos computadores, aos videojogos e aos emuladores. Foi aí que nasceu a curiosidade por perceber como as coisas funcionam por dentro.",
         "Chegar até aqui não foi uma linha reta. Cresci numa parte isolada de Santo André, no Brasil, numa das escolas mais fracas da cidade. Algumas disciplinas passaram anos sem professor, e matemática foi a maior lacuna que isso deixou. Só fui realmente confrontar isso ao iniciar o 12º ano em Portugal, na área de Ciências, e tive que recuperar anos de matemática e física perdidos só para passar no exame de acesso à faculdade, com muita ajuda de um professor particular, o professor Ivo. Essa mesma vontade continuou na faculdade, onde fui <b>de aluno com dificuldades a melhor da turma</b>, com as melhores notas de matemática incluídas.",
@@ -67,6 +69,7 @@
         "emulators": "Emuladores",
         "games": "Jogos singleplayer"
       },
+      "filmstripAlt": "Foto analógica",
       "lastfm": {
         "artists": "Mais Ouvidos da Semana",
         "tracks": "Faixas Mais Tocadas da Semana"
