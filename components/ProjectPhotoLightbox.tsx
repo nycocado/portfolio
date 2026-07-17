@@ -232,7 +232,7 @@ export function ProjectPhotoLightbox({
         <div
           ref={thumbStripRef}
           onClick={(e) => e.stopPropagation()}
-          className="flex justify-start gap-2 overflow-x-auto px-4 pb-4"
+          className="flex justify-start gap-2 overflow-x-auto no-scrollbar px-4 pb-4"
         >
           {images.map((img, i) => (
             <button

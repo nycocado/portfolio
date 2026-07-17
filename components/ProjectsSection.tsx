@@ -64,7 +64,7 @@ export function ProjectsSection() {
       </h2>
 
       <div className="flex flex-col md:flex-row gap-10">
-        <nav className="flex flex-row md:flex-col gap-1 overflow-x-auto md:w-40 shrink-0">
+        <nav className="flex flex-row md:flex-col gap-1 overflow-x-auto no-scrollbar md:w-40 shrink-0">
           {projects.map((project) => {
             const isActive = project.id === selectedId;
             return (
