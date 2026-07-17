@@ -1,10 +1,12 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { projects } from "@/config/projects";
 import { ProjectPhotoStack } from "@/components/ProjectPhotoStack";
 import { BlobMarker } from "@/components/BlobMarker";
+import { SectionHeading } from "@/components/SectionHeading";
+import { useRevealOnScroll } from "@/lib/useRevealOnScroll";
 
 export function ProjectsSection() {
   const t = useTranslations("Projects");
@@ -13,29 +15,7 @@ export function ProjectsSection() {
   const highlights = t.raw(`${selected.id}.highlights`) as string[];
   const sectionRef = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
-    const targets = sectionRef.current?.querySelectorAll("h2, nav, article");
-    if (!targets?.length) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("hp-reveal-on");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 },
-    );
-    targets.forEach((target, i) => {
-      target.classList.add("hp-reveal");
-      (target as HTMLElement).style.transitionDelay = `${i * 0.12}s`;
-      io.observe(target);
-    });
-
-    return () => io.disconnect();
-  }, []);
+  useRevealOnScroll(sectionRef, "h2, nav, article");
 
   return (
     <section
@@ -43,25 +23,7 @@ export function ProjectsSection() {
       id="projects"
       className="min-h-screen flex flex-col w-full max-w-4xl mx-auto scroll-mt-6 pt-24 pb-24 px-8"
     >
-      <h2 className="relative inline-block font-display text-3xl md:text-4xl font-bold text-gruvbox-yellow mb-12">
-        {t("heading")}
-        <svg
-          className="absolute left-0 top-full mt-1 text-gruvbox-yellow"
-          width={130}
-          height={9}
-          viewBox="0 0 180 12"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            className="hp-underline"
-            d="M3 8 C 30 3, 55 10, 85 6 S 145 3, 177 7"
-            stroke="currentColor"
-            strokeWidth={4}
-            strokeLinecap="round"
-          />
-        </svg>
-      </h2>
+      <SectionHeading className="mb-12">{t("heading")}</SectionHeading>
 
       <div className="flex flex-col md:flex-row gap-10">
         <nav className="flex flex-row md:flex-col gap-1 overflow-x-auto no-scrollbar md:w-40 shrink-0">

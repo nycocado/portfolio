@@ -7,7 +7,10 @@ import { NavbarScrollWrapper } from "@/components/NavbarScrollWrapper";
 
 export async function Navbar() {
   const t = await getTranslations("Navbar");
-  const links = [{ href: "#projects", label: t("projects") }];
+  const links = [
+    { href: "#about", label: t("about") },
+    { href: "#projects", label: t("projects") },
+  ];
 
   return (
     <NavbarScrollWrapper>

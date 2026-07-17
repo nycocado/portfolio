@@ -5,7 +5,7 @@ export async function ScrollCue() {
 
   return (
     <a
-      href="#projects"
+      href="#about"
       aria-label={t("label")}
       className="hp-cue-bounce hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-gruvbox-yellow hover:text-gruvbox-yellow-aa transition-colors"
     >

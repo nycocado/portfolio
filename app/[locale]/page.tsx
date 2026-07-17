@@ -3,10 +3,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { SocialLinks } from "@/components/SocialLinks";
 import { HeroPhoto } from "@/components/HeroPhoto";
+import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ScrollCue } from "@/components/ScrollCue";
 import { socialLinks } from "@/config/portfolio";
 import { SITE_URL } from "@/lib/site";
+import { richText } from "@/lib/richText";
 import profilePic from "@/public/photo.webp";
 
 export default async function Home({
@@ -20,7 +22,6 @@ export default async function Home({
   const name = t("name");
   const alternateName = t("alternateName");
   const role = t("role");
-  const tagline = t("tagline");
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -85,7 +86,7 @@ export default async function Home({
               className="hp-in font-sans text-lg md:text-2xl text-gruvbox-gray/90 font-medium max-w-xl leading-relaxed"
               style={{ "--hp-i": 4 } as CSSProperties}
             >
-              {tagline}
+              {t.rich("tagline", richText)}
             </p>
             <div className="hp-in" style={{ "--hp-i": 5 } as CSSProperties}>
               <SocialLinks />
@@ -95,6 +96,8 @@ export default async function Home({
 
         <ScrollCue />
       </section>
+
+      <AboutSection />
 
       <ProjectsSection />
     </main>
