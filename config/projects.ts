@@ -4,6 +4,8 @@ export interface ProjectImage {
   height: number;
 }
 
+export const isVideoSrc = (src: string) => /\.(webm|mp4)$/.test(src);
+
 export interface Project {
   id:
     "capo" | "speedy" | "wash-buddy" | "world-of-toilets" | "physics-simulator";
@@ -21,6 +23,7 @@ export const projects: Project[] = [
       { src: "/projects/capo/01.webm", width: 1920, height: 1080 },
       { src: "/projects/capo/02.webm", width: 1920, height: 1080 },
       { src: "/projects/capo/03.webm", width: 1920, height: 1080 },
+      { src: "/projects/capo/04.webm", width: 1920, height: 1080 },
     ],
   },
   {
@@ -131,6 +134,11 @@ export const projects: Project[] = [
     id: "physics-simulator",
     githubUrl: "https://github.com/nycocado/physics-simulator",
     tags: ["C", "GTK4", "Cairo"],
-    images: [],
+    images: [
+      { src: "/projects/physics-simulator/01.webm", width: 1920, height: 1080 },
+      { src: "/projects/physics-simulator/02.webm", width: 1920, height: 1080 },
+      { src: "/projects/physics-simulator/03.webp", width: 2056, height: 1458 },
+      { src: "/projects/physics-simulator/04.webp", width: 2056, height: 1458 },
+    ],
   },
 ];
