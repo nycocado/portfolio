@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ThemeProvider } from "./providers";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { ThemeProvider } from "next-themes";
 import { SITE_URL } from "@/lib/site";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
@@ -30,7 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={routing.defaultLocale} suppressHydrationWarning>
+    <html
+      lang={routing.defaultLocale}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body
         className={`${spaceGrotesk.variable} ${manrope.variable} antialiased min-h-screen`}
       >
@@ -41,7 +44,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <SmoothScroll />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

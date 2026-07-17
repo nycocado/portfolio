@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { projects } from "@/config/projects";
 import { ProjectPhotoStack } from "@/components/ProjectPhotoStack";
@@ -11,14 +11,56 @@ export function ProjectsSection() {
   const [selectedId, setSelectedId] = useState(projects[0].id);
   const selected = projects.find((project) => project.id === selectedId)!;
   const highlights = t.raw(`${selected.id}.highlights`) as string[];
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const targets = sectionRef.current?.querySelectorAll("h2, nav, article");
+    if (!targets?.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("hp-reveal-on");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    targets.forEach((target, i) => {
+      target.classList.add("hp-reveal");
+      (target as HTMLElement).style.transitionDelay = `${i * 0.12}s`;
+      io.observe(target);
+    });
+
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
-      className="min-h-screen flex flex-col w-full max-w-4xl mx-auto pt-24 pb-24 px-8"
+      className="min-h-screen flex flex-col w-full max-w-4xl mx-auto scroll-mt-6 pt-24 pb-24 px-8"
     >
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-gruvbox-yellow mb-12">
+      <h2 className="relative inline-block font-display text-3xl md:text-4xl font-bold text-gruvbox-yellow mb-12">
         {t("heading")}
+        <svg
+          className="absolute left-0 top-full mt-1 text-gruvbox-yellow"
+          width={130}
+          height={9}
+          viewBox="0 0 180 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            className="hp-underline"
+            d="M3 8 C 30 3, 55 10, 85 6 S 145 3, 177 7"
+            stroke="currentColor"
+            strokeWidth={4}
+            strokeLinecap="round"
+          />
+        </svg>
       </h2>
 
       <div className="flex flex-col md:flex-row gap-10">

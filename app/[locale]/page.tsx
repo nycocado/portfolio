@@ -1,7 +1,8 @@
+import type { CSSProperties } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Navbar } from "@/components/Navbar";
 import { SocialLinks } from "@/components/SocialLinks";
-import { AnimatedPhoto } from "@/components/AnimatedPhoto";
+import { HeroPhoto } from "@/components/HeroPhoto";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ScrollCue } from "@/components/ScrollCue";
 import { socialLinks } from "@/config/portfolio";
@@ -46,24 +47,49 @@ export default async function Home({
 
       <section className="relative min-h-dvh flex flex-col items-center justify-center p-8 overflow-hidden">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 z-10 w-full max-w-4xl">
-          <div className="relative w-[13rem] h-[15rem] md:w-[19rem] md:h-[21.5rem] shrink-0 group">
-            <div className="absolute inset-0 rounded-[45%_55%_58%_42%/55%_48%_52%_45%] border-4 border-gruvbox-yellow shadow-2xl animate-pulse opacity-20 group-hover:opacity-40 transition-opacity" />
-            <div className="w-full h-full rounded-[45%_55%_58%_42%/55%_48%_52%_45%] bg-gruvbox-gray/20 overflow-hidden border-4 border-gruvbox-yellow shadow-2xl flex items-center justify-center relative z-10">
-              <AnimatedPhoto src={profilePic} alt={name} />
-            </div>
+          <div className="hp-in" style={{ "--hp-i": 1 } as CSSProperties}>
+            <HeroPhoto src={profilePic} alt={name} />
           </div>
 
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-            <span className="font-sans text-xs md:text-sm font-bold uppercase tracking-widest text-gruvbox-gray/90">
+            <span
+              className="hp-in font-sans text-xs md:text-sm font-bold uppercase tracking-widest text-gruvbox-gray/90"
+              style={{ "--hp-i": 2 } as CSSProperties}
+            >
               {role}
             </span>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-gruvbox-yellow tracking-tight drop-shadow-sm">
+            <h1
+              className="hp-in font-display text-5xl md:text-7xl font-bold text-gruvbox-yellow tracking-tight drop-shadow-sm"
+              style={{ "--hp-i": 3 } as CSSProperties}
+            >
               {name}
             </h1>
-            <p className="font-sans text-lg md:text-2xl text-gruvbox-gray/90 font-medium max-w-xl leading-relaxed">
+            <svg
+              className="hp-in -mt-1.5 text-gruvbox-yellow"
+              style={{ "--hp-i": 3 } as CSSProperties}
+              width={180}
+              height={12}
+              viewBox="0 0 180 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                className="hp-underline"
+                d="M3 8 C 30 3, 55 10, 85 6 S 145 3, 177 7"
+                stroke="currentColor"
+                strokeWidth={4}
+                strokeLinecap="round"
+              />
+            </svg>
+            <p
+              className="hp-in font-sans text-lg md:text-2xl text-gruvbox-gray/90 font-medium max-w-xl leading-relaxed"
+              style={{ "--hp-i": 4 } as CSSProperties}
+            >
               {tagline}
             </p>
-            <SocialLinks />
+            <div className="hp-in" style={{ "--hp-i": 5 } as CSSProperties}>
+              <SocialLinks />
+            </div>
           </div>
         </div>
 

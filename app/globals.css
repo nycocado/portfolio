@@ -70,6 +70,12 @@
   animation: fade-in 0.6s ease;
 }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gruvbox-gray) transparent;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -84,4 +90,212 @@ body {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+::selection {
+  background: var(--gruvbox-yellow);
+  color: var(--background);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gruvbox-yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hero photo: organic "blob" shape that slowly morphs, plus an offset
+   shadow blob that spreads further on hover (paired with the 3D tilt in
+   HeroPhoto.tsx). */
+@keyframes hero-blob {
+  0%,
+  100% {
+    border-radius: 45% 55% 58% 42% / 55% 48% 52% 45%;
+  }
+  25% {
+    border-radius: 53% 47% 45% 55% / 49% 55% 45% 52%;
+  }
+  50% {
+    border-radius: 44% 56% 56% 44% / 56% 45% 56% 43%;
+  }
+  75% {
+    border-radius: 52% 48% 45% 55% / 45% 52% 49% 55%;
+  }
+}
+
+.hero-blob {
+  border-radius: 45% 55% 58% 42% / 55% 48% 52% 45%;
+  animation: hero-blob 11s ease-in-out infinite;
+  transition: box-shadow 0.5s ease;
+}
+
+.hero-photo:hover .hero-blob {
+  box-shadow: 0 25px 60px -10px rgb(250 189 47 / 0.35);
+}
+
+.hero-blob-shadow {
+  border-radius: 45% 55% 58% 42% / 55% 48% 52% 45%;
+  animation: hero-blob 11s ease-in-out infinite reverse;
+  opacity: 0.45;
+  transform: translate(16px, 18px) translateZ(-48px);
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.hero-photo:hover .hero-blob-shadow {
+  transform: translate(26px, 28px) translateZ(-48px);
+  opacity: 0.7;
+}
+
+/* Hand-drawn underline beneath the hero name, gently wobbling. */
+@keyframes hp-underline {
+  0%,
+  100% {
+    d: path("M3 8 C 30 3, 55 10, 85 6 S 145 3, 177 7");
+  }
+  50% {
+    d: path("M3 5.5 C 30 10, 55 3, 85 8.5 S 145 7.5, 177 5");
+  }
+}
+
+.hp-underline {
+  animation: hp-underline 6s ease-in-out infinite;
+}
+
+/* Scroll cue arrow: the path itself wobbles; the bounce is Tailwind's
+   built-in animate-bounce utility. */
+@keyframes hp-arrow {
+  0%,
+  100% {
+    d: path(
+      "M35 6 C 47 9.5, 47 16.5, 35 20 S 23 30.5, 35 34 S 47 44.5, 35 48 S 23 58.5, 35 62 S 35 72.5, 35 76 L 35 88"
+    );
+  }
+  50% {
+    d: path(
+      "M35 6 C 43 12.5, 43 15, 35 20 S 27 27.5, 35 34 S 43 41, 35 48 S 27 55, 35 62 S 35 72.5, 35 76 L 35 88"
+    );
+  }
+}
+
+.hp-arrow-path {
+  animation: hp-arrow 6s ease-in-out infinite;
+}
+
+@keyframes hp-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.hp-cue-bounce {
+  animation: hp-cue-bounce 2.2s ease-in-out infinite;
+}
+
+/* Hand-drawn tooltip bubble, shown via a data-tip attribute. */
+.hp-tip {
+  position: relative;
+}
+
+.hp-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--background);
+  background: var(--gruvbox-yellow);
+  padding: 3px 10px;
+  border-radius: 8px 12px 10px 14px / 12px 8px 14px 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  white-space: nowrap;
+}
+
+.hp-tip:hover::after,
+.hp-tip:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) rotate(-2deg) translateY(-3px);
+}
+
+/* Staggered entrance for the hero content. */
+@keyframes hp-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hp-in {
+  opacity: 0;
+  animation: hp-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc((var(--hp-i, 1) - 1) * 0.1s + 0.05s);
+}
+
+/* Navbar glass background, applied once the page has scrolled. */
+.hp-nav {
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.hp-nav-scrolled {
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gruvbox-outline);
+}
+
+/* Reveal-on-scroll for the projects section (JS-driven via
+   IntersectionObserver — the class is only ever added once JS runs, so
+   without it content stays visible by default). */
+.hp-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hp-reveal-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-blob,
+  .hero-blob-shadow,
+  .hp-underline,
+  .hp-arrow-path,
+  .hp-cue-bounce {
+    animation: none;
+  }
+  .hp-in {
+    animation: none;
+    opacity: 1;
+  }
+  .hp-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

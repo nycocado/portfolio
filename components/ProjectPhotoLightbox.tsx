@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import type { ProjectImage } from "@/config/projects";
+import { ChevronLeft, ChevronRight, Pause, Play, X } from "lucide-react";
+import { isVideoSrc, type ProjectImage } from "@/config/projects";
 
 const SWIPE_THRESHOLD = 50;
 
@@ -25,7 +25,9 @@ export function ProjectPhotoLightbox({
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const thumbStripRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
-  const drag = useRef({ dragging: false, moved: false, startX: 0, startScroll: 0 });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoPaused, setVideoPaused] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
 
   const canNavigate = images.length > 1;
   const goPrev = () => onIndexChange(Math.max(0, index - 1));
@@ -63,7 +65,45 @@ export function ProjectPhotoLightbox({
   }, [index]);
 
   const image = images[index];
-  const isVideo = /\.(webm|mp4)$/.test(image.src);
+  const isVideo = isVideoSrc(image.src);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    setVideoPaused(false);
+    setVideoProgress(0);
+
+    const onTimeUpdate = () => {
+      setVideoProgress(video.duration ? (video.currentTime / video.duration) * 100 : 0);
+    };
+    const onPlay = () => setVideoPaused(false);
+    const onPause = () => setVideoPaused(true);
+
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+    return () => {
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+    };
+  }, [index]);
+
+  const toggleVideoPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) video.play();
+    else video.pause();
+  };
+
+  const seekVideo = (e: React.MouseEvent<HTMLDivElement>) => {
+    const video = videoRef.current;
+    if (!video || !video.duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    video.currentTime = ratio * video.duration;
+  };
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -76,31 +116,6 @@ export function ProjectPhotoLightbox({
 
     if (delta > SWIPE_THRESHOLD) goPrev();
     else if (delta < -SWIPE_THRESHOLD) goNext();
-  };
-
-  const onThumbPointerDown = (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse") return;
-    const el = thumbStripRef.current;
-    if (!el) return;
-    drag.current = {
-      dragging: true,
-      moved: false,
-      startX: e.clientX,
-      startScroll: el.scrollLeft,
-    };
-  };
-
-  const onThumbPointerMove = (e: React.PointerEvent) => {
-    if (!drag.current.dragging) return;
-    const el = thumbStripRef.current;
-    if (!el) return;
-    const delta = e.clientX - drag.current.startX;
-    if (Math.abs(delta) > 3) drag.current.moved = true;
-    el.scrollLeft = drag.current.startScroll - delta;
-  };
-
-  const onThumbPointerUp = () => {
-    drag.current.dragging = false;
   };
 
   return createPortal(
@@ -133,6 +148,7 @@ export function ProjectPhotoLightbox({
         {isVideo ? (
           <video
             key={image.src}
+            ref={videoRef}
             src={image.src}
             width={image.width}
             height={image.height}
@@ -180,17 +196,42 @@ export function ProjectPhotoLightbox({
             </button>
           </>
         )}
+
+        {isVideo && (
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 w-64 max-w-[80vw] rounded-full bg-black/60 backdrop-blur-sm px-4 py-2 shadow-lg"
+          >
+            <button
+              type="button"
+              onClick={toggleVideoPlay}
+              aria-label={videoPaused ? "Play" : "Pause"}
+              className="shrink-0 text-white cursor-pointer"
+            >
+              {videoPaused ? (
+                <Play className="w-4 h-4" />
+              ) : (
+                <Pause className="w-4 h-4" />
+              )}
+            </button>
+            <div
+              onClick={seekVideo}
+              className="h-1.5 flex-1 rounded-full bg-white/30 cursor-pointer"
+            >
+              <div
+                className="h-full rounded-full bg-white"
+                style={{ width: `${videoProgress}%` }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       {canNavigate && (
         <div
           ref={thumbStripRef}
           onClick={(e) => e.stopPropagation()}
-          onPointerDown={onThumbPointerDown}
-          onPointerMove={onThumbPointerMove}
-          onPointerUp={onThumbPointerUp}
-          onPointerLeave={onThumbPointerUp}
-          className="no-scrollbar flex justify-start gap-2 overflow-x-auto px-4 pb-4 cursor-grab active:cursor-grabbing select-none"
+          className="flex justify-start gap-2 overflow-x-auto px-4 pb-4"
         >
           {images.map((img, i) => (
             <button
@@ -199,13 +240,7 @@ export function ProjectPhotoLightbox({
                 thumbRefs.current[i] = el;
               }}
               type="button"
-              onClick={() => {
-                if (drag.current.moved) {
-                  drag.current.moved = false;
-                  return;
-                }
-                onIndexChange(i);
-              }}
+              onClick={() => onIndexChange(i)}
               aria-label={`Photo ${i + 1}`}
               className={`shrink-0 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${
                 i === index
@@ -213,7 +248,7 @@ export function ProjectPhotoLightbox({
                   : "border-2 border-transparent grayscale brightness-[0.55]"
               }`}
             >
-              {/\.(webm|mp4)$/.test(img.src) ? (
+              {isVideoSrc(img.src) ? (
                 <video
                   src={img.src}
                   muted

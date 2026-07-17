@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { ProjectImage } from "@/config/projects";
+import { isVideoSrc, type ProjectImage } from "@/config/projects";
 import { ProjectPhotoLightbox } from "@/components/ProjectPhotoLightbox";
 
 const viewportCenter = (scroller: HTMLDivElement) =>
@@ -29,9 +29,17 @@ export function ProjectPhotoStack({
 }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const programmatic = useRef(false);
-  const releaseTimer = useRef<number | undefined>(undefined);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [current, setCurrent] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === current) video.play().catch(() => {});
+      else video.pause();
+    });
+  }, [current]);
 
   const updateCurrent = useCallback(() => {
     const scroller = scrollerRef.current;
@@ -63,11 +71,16 @@ export function ProjectPhotoStack({
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(updateCurrent);
     };
+    const onScrollEnd = () => {
+      programmatic.current = false;
+    };
 
     scroller.addEventListener("scroll", onScroll);
+    scroller.addEventListener("scrollend", onScrollEnd);
     return () => {
       cancelAnimationFrame(rafId);
       scroller.removeEventListener("scroll", onScroll);
+      scroller.removeEventListener("scrollend", onScrollEnd);
     };
   }, [updateCurrent]);
 
@@ -87,10 +100,6 @@ export function ProjectPhotoStack({
 
     setCurrent(clamped);
     programmatic.current = true;
-    clearTimeout(releaseTimer.current);
-    releaseTimer.current = window.setTimeout(() => {
-      programmatic.current = false;
-    }, 400);
     scroller.scrollTo({ left: snapLeftFor(scroller, child), behavior: "smooth" });
   };
 
@@ -107,14 +116,16 @@ export function ProjectPhotoStack({
           const onClick = () =>
             i === current ? setLightboxOpen(true) : goTo(i);
 
-          if (/\.(webm|mp4)$/.test(image.src)) {
+          if (isVideoSrc(image.src)) {
             return (
               <video
                 key={image.src}
+                ref={(el) => {
+                  videoRefs.current[i] = el;
+                }}
                 src={image.src}
                 width={image.width}
                 height={image.height}
-                autoPlay
                 muted
                 loop
                 playsInline
