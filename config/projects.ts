@@ -137,8 +137,6 @@ export const projects: Project[] = [
     images: [
       { src: "/projects/physics-simulator/01.webm", width: 1920, height: 1080 },
       { src: "/projects/physics-simulator/02.webm", width: 1920, height: 1080 },
-      { src: "/projects/physics-simulator/03.webp", width: 2056, height: 1458 },
-      { src: "/projects/physics-simulator/04.webp", width: 2056, height: 1458 },
     ],
   },
 ];
