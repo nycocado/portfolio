@@ -1,4 +1,4 @@
-import { getSpotifyArtistImage, getSpotifyTrackImage } from "@/lib/spotify";
+import { getDeezerArtistImage, getDeezerTrackImage } from "@/lib/deezer";
 
 const API_URL = "https://ws.audioscrobbler.com/2.0/";
 
@@ -53,7 +53,7 @@ export async function getLastFmWeeklyTop(): Promise<LastFmData | null> {
       (artistsJson.topartists?.artist ?? []).map(async (a) => ({
         name: a.name,
         url: a.url,
-        image: await getSpotifyArtistImage(a.name),
+        image: await getDeezerArtistImage(a.name),
       })),
     );
 
@@ -62,7 +62,7 @@ export async function getLastFmWeeklyTop(): Promise<LastFmData | null> {
         name: t.name,
         artist: t.artist.name,
         url: t.url,
-        image: await getSpotifyTrackImage(t.name, t.artist.name),
+        image: await getDeezerTrackImage(t.name, t.artist.name),
       })),
     );
 

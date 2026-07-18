@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [{ hostname: "i.scdn.co" }],
+    remotePatterns: [{ hostname: "cdn-images.dzcdn.net" }],
   },
 };
 
