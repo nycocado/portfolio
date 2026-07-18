@@ -78,7 +78,7 @@ export function LastFmWidget({
           imageClassName: "rounded",
           label: (
             <>
-              {track.name} <span className="text-gruvbox-gray/60">— {track.artist}</span>
+              {track.name} <span className="text-gruvbox-gray/90">— {track.artist}</span>
             </>
           ),
         }))}

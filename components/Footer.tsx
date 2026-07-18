@@ -26,7 +26,7 @@ export async function Footer() {
         </a>
       </nav>
 
-      <p className="text-xs text-gruvbox-gray/70">© {yearLabel} Nycolas Souza</p>
+      <p className="text-xs text-gruvbox-gray/90">© {yearLabel} Nycolas Souza</p>
     </footer>
   );
 }
