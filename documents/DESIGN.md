@@ -87,7 +87,27 @@ Key numbers: swings are 14 units apart (half the 28-unit wave period), amplitude
 
 This shape went through many animation experiments (a traveling sine wave, a "worm" crawling dash, per-swing pulsing) — all were tried and rejected as either too subtle, too distorted, or not matching the intended motion. Current state: **fully static**, no animation. If motion is revisited, any approach must leave this exact `d` string undistorted at rest and never move the leg/arrowhead.
 
-Hidden below `md:` — on some mobile browsers the fixed bottom position read as visually broken, so the cue only shows on larger viewports.
+Hidden below `md:` — on some mobile browsers the fixed bottom position read as visually broken, so the cue only shows on larger viewports. Links to `#about` (not `#projects`). Hover uses `--gruvbox-yellow-aa` in light mode, but that token is identical to `--gruvbox-yellow` in dark mode — so dark mode overrides with Gruvbox's real orange (`dark:hover:text-[#fe8019]`) to keep a genuine color-change hover in both themes rather than falling back to opacity/scale.
+
+## About section — recruiter/personal toggle
+
+`AboutSection` is a client component with a `mode` state (`"recruiter" | "personal"`), switched by a pill toggle next to the heading. Bio copy, quick facts, and photo (`config/about.ts`) all key off `mode`; bio paragraphs use `t.rich` with `richText` for inline `<b>` emphasis (`--gruvbox-yellow-aa`, not plain yellow — plain yellow fails AA contrast in light mode at that weight). The active toggle pill also uses `-aa` for the same reason.
+
+The photo (`aspect-[3/4]` on mobile, `aspect-[2/5]` on desktop) crops live via `object-cover` + `objectPosition` from config — source files are kept at full/natural resolution, never pre-cropped, so the crop can be retuned without re-exporting images.
+
+Recruiter mode adds a career timeline (`timelineIds`, a dotted vertical line + period/title pairs). Personal mode adds `FilmStrip` and `LastFmWidget` below the article instead — each mode owns independent content rather than sharing a fixed-height container, so one mode's shorter content doesn't leave a dead gap sized for the other's.
+
+## Analog filmstrip (`FilmStrip`)
+
+A horizontal, auto-scrolling strip of real 35mm scans (`config/about.ts`'s `analogPhotos`), styled as a literal film reel: black background, `filmstrip-sprockets` (repeating radial-gradient circles) above and below the photo row. Scrolls via `animate-filmstrip-scroll` (duplicate the photo list, `translateX(-50%)` keyframe) for a seamless loop; pauses on hover. Respects `prefers-reduced-motion`. Clicking a photo opens the existing `ProjectPhotoLightbox`. Each real photo gets a numbered `aria-label` (`"{alt} — {n}/{count}"`); the duplicated half of the loop is `aria-hidden` + `tabIndex={-1}` so it's invisible to assistive tech and keyboard nav.
+
+## Last.fm weekly widget (`LastFmWidget`)
+
+Two side-by-side lists (top artists, top tracks — last 7 days, top 5 each) fetched server-side in `lib/lastfm.ts` from the Last.fm API, with cover art enriched via Spotify's Client Credentials flow (`lib/spotify.ts`) since Last.fm's own image API is deprecated and returns a placeholder for every entry. Shares a `LastFmList` sub-component for the artist/track row markup. Renders only when `lastFm` data is available (`AboutSection`'s `lastFm` prop, fetched once in `page.tsx`).
+
+## Footer
+
+Minimal: social icons (`SocialLinks size="sm"`), a nav reusing the same labels as the navbar (`Navbar.home`, `About.heading`, `Projects.heading` — no separate `Footer` i18n namespace), and a copyright line. `Navbar`'s logo is decorative-only (`aria-hidden`, empty `alt`, no wrapping link) now that "Home" has its own nav link — it no longer doubles as the home affordance.
 
 ## List marker — organic blob, randomized (`BlobMarker`)
 
