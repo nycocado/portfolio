@@ -3,9 +3,9 @@
 # portfolio
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="media/logo-light.png">
-  <img alt="nycocado" src="media/logo-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="media/logo-dark-v2.png">
+  <source media="(prefers-color-scheme: light)" srcset="media/logo-light-v2.png">
+  <img alt="nycocado" src="media/logo-light-v2.png">
 </picture>
 
 ![Status](https://img.shields.io/badge/status-in%20development-6f42c1)
