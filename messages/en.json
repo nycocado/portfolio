@@ -1,12 +1,12 @@
 {
   "Metadata": {
     "title": "Nycolas Souza | Portfolio",
-    "description": "Backend Software Engineer"
+    "description": "Software Engineer"
   },
   "Hero": {
     "name": "Nycolas Souza",
     "alternateName": "nycocado",
-    "role": "Backend Software Engineer",
+    "role": "Software Engineer",
     "tagline": "When an idea makes sense, I like <b>seeing how far it goes</b>."
   },
   "Social": {
@@ -29,7 +29,7 @@
     "recruiter": {
       "photoAlt": "Nycolas Souza, professional photo",
       "bio": [
-        "Backend Software Engineer, recently graduated in Computer Engineering from IADE — Universidade Europeia, <b>top of my class</b>. I build systems meant to grow with the business, with a focus on maintainability and clear architecture. My background spans the full development lifecycle: from building user interfaces to designing the APIs and integrations that serve them well. Currently deepening my Java and Spring Boot practice, with a strong interest in distributed systems, process automation, and cloud infrastructure."
+        "Software Engineer, recently graduated in Computer Engineering from IADE — Universidade Europeia, <b>top of my class</b>. I build systems meant to grow with the business, with a focus on maintainability and clear architecture. My background spans the full development lifecycle: from building user interfaces to designing the APIs and integrations that serve them well. Currently deepening my Java and Spring Boot practice, with a strong interest in distributed systems, process automation, and cloud infrastructure."
       ],
       "facts": {
         "education": "BSc Computer Engineering — IADE, Lisbon (top of class, 18.14/20)",

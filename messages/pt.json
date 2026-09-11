@@ -1,12 +1,12 @@
 {
   "Metadata": {
     "title": "Nycolas Souza | Portfólio",
-    "description": "Engenheiro de Software Back-End"
+    "description": "Engenheiro de Software"
   },
   "Hero": {
     "name": "Nycolas Souza",
     "alternateName": "nycocado",
-    "role": "Engenheiro de Software Back-End",
+    "role": "Engenheiro de Software",
     "tagline": "Quando uma ideia faz sentido, gosto de <b>ver até onde ela vai</b>."
   },
   "Social": {
@@ -29,7 +29,7 @@
     "recruiter": {
       "photoAlt": "Nycolas Souza, foto profissional",
       "bio": [
-        "Engenheiro de Software back-end, recém-formado em Engenharia Informática pelo IADE — Universidade Europeia, com <b>a nota mais alta da turma</b>. Construo sistemas pensados para crescer com o negócio, com foco em manutenibilidade e clareza de arquitetura. A minha experiência cobre todo o ciclo de desenvolvimento: desde a construção de interfaces até ao desenho de APIs e integrações que as servem bem. Atualmente a aprofundar a prática em Java e Spring Boot, com forte interesse em sistemas distribuídos, automação de processos e infraestrutura cloud."
+        "Engenheiro de Software, recém-formado em Engenharia Informática pelo IADE — Universidade Europeia, com <b>a nota mais alta da turma</b>. Construo sistemas pensados para crescer com o negócio, com foco em manutenibilidade e clareza de arquitetura. A minha experiência cobre todo o ciclo de desenvolvimento: desde a construção de interfaces até ao desenho de APIs e integrações que as servem bem. Atualmente a aprofundar a prática em Java e Spring Boot, com forte interesse em sistemas distribuídos, automação de processos e infraestrutura cloud."
       ],
       "facts": {
         "education": "Lic. em Engenharia Informática — IADE, Lisboa (melhor aluno da turma, 18,14/20)",
