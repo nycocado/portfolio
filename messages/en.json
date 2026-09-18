@@ -52,16 +52,16 @@
         },
         "current": {
           "period": "Now",
-          "title": "Looking for a first junior opportunity, focused on Java and distributed systems"
+          "title": "Looking for a junior opportunity, focused on Java and distributed systems"
         }
       }
     },
     "personal": {
       "photoAlt": "Nycolas Souza, personal photo",
       "bio": [
-        "It all started with my uncle Naor, who introduced me to computers, video games, and emulators. That's where the curiosity for understanding how things work under the hood came from.",
-        "Getting here wasn't a straight line, though. I grew up in an isolated part of Santo André, Brazil, going to one of the weakest schools in the city. Some subjects went years without a teacher, and math was the biggest gap it left me with. I only really confronted that when I started 12th grade in Portugal, in the Sciences track, and had to cram years of missing math and physics just to pass the entrance exam, with a lot of help from a private tutor, Professor Ivo. That same drive carried into university, where I went <b>from struggling to top of my class</b>, best math grades included.",
-        "Outside of code, I'm usually behind a camera, deep in a singleplayer game, or lost in a book, Isaac Asimov being a favorite. Photography, music, and reading are the other half of how I pay attention to detail."
+        "It all started with my uncle, who introduced me to computers, video games, and emulators. That's where the curiosity for understanding how things work under the hood came from.",
+        "Getting here wasn't a straight line, though. I grew up in an isolated part of Santo André, Brazil, going to one of the weakest schools in the city. Some subjects went years without a teacher, and math was the biggest gap it left me with. I only really confronted that when I started 12th grade in Portugal, in the Sciences track, and had to cram years of missing math and physics just to pass the entrance exam. That same drive carried into university, where I went <b>from struggling to top of my class</b>, best math grades included.",
+        "Outside of code, I'm usually behind a camera, digging through my retro games collection, or lost in a book, Isaac Asimov being a favorite. Photography, music, and reading are the other half of how I pay attention to detail."
       ],
       "facts": {
         "photography": "Photography",
